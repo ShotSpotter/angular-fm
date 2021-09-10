@@ -8,20 +8,24 @@ import {MaterialModule} from "../common/material.module";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {DatePickerModule} from "../common/date-picker/date-picker.module";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    TypeaheadModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    MatMomentDateModule,
+    TypeaheadModule,
+    DatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

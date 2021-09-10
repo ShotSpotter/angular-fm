@@ -1,35 +1,64 @@
 <div class="container">
 
-  <div class="container-fluid mt-5">
+  <div class="container-fluid mt-5 d-flex flex-md-nowrap">
 
-    <mat-card class="col-12 col-md-4">
+    <mat-card class="col-12 col-md-4 mx-2">
 
       <mat-card-header>
         <mat-card-title>Typeahead</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
-        <div [formGroup]="form" class="col-12">
+        <div [formGroup]="typeaheadForm" class="col-12">
           <app-typeahead formControlName="name"></app-typeahead>
         </div>
         <div class="col-12 px-2">
-          <label class="text-muted">Control Value: </label>{{getControlValue()}}
+          <label class="text-muted">Control Value: </label>{{typeaheadForm.get('name')?.value}}
         </div>
       </mat-card-content>
 
       <mat-card-footer>
         <div class="col-12">
           <mat-card-actions class="m-0 p-0">
-            <button mat-button [disabled]="!form.get('name')?.errors" color="warn">
-              Wrong Answer
+            <button mat-button [disabled]="!typeaheadForm.get('name')?.errors" color="warn">
+              Invalid
             </button>
             <mat-divider></mat-divider>
-            <button mat-button [disabled]="!!form.get('name')?.errors" color="primary">
-              Right Answer
+            <button mat-button [disabled]="!!typeaheadForm.get('name')?.errors" color="primary">
+              Valid
             </button>
-            <div class="w-100 text-center">
-              <button class="" mat-raised-button color="primary" (click)="submit()">Submit</button>
-            </div>
+          </mat-card-actions>
+        </div>
+      </mat-card-footer>
+
+
+    </mat-card>
+
+    <mat-card class="col-12 col-md-4">
+
+      <mat-card-header>
+        <mat-card-title>Date Picker</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div [formGroup]="datePickerForm" class="col-12">
+          <app-date-picker formControlName="date"></app-date-picker>
+        </div>
+        <div class="col-12 px-2">
+          <label class="text-muted">Control Value: </label>{{datePickerForm.get('date')?.value}}
+        </div>
+      </mat-card-content>
+
+      <mat-card-footer>
+        <div class="col-12">
+          <mat-card-actions class="m-0 p-0">
+            <button mat-button [disabled]="!datePickerForm.get('date')?.errors" color="warn">
+              Invalid
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-button [disabled]="!!datePickerForm.get('date')?.errors" color="primary">
+              Valid
+            </button>
           </mat-card-actions>
         </div>
       </mat-card-footer>
@@ -38,5 +67,4 @@
     </mat-card>
 
   </div>
-
 </div>

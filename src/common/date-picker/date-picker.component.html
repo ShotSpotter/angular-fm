@@ -1,0 +1,8 @@
+<div class="p-0">
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" #datepicker (keydown)="inputFormat($event, datepicker.value)" (dateChange)="onDatepickerDate($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>

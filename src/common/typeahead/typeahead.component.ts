@@ -133,7 +133,7 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
         })
       )
       .subscribe((value: any) => {
-        this.filteredOptions = value;
+        this.filteredOptions = !!this.typeaheadInput.nativeElement.value ? value : [];
       })
   }
 

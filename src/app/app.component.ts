@@ -10,23 +10,16 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class AppComponent {
   title = 'components';
 
-  form: FormGroup;
+  typeaheadForm: FormGroup;
+  datePickerForm: FormGroup;
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) {
-    this.form = fb.group({
+    this.typeaheadForm = fb.group({
       name: ['', [Validators.required]],
     });
-  }
 
-  getControlValue() {
-    return this.form.get('name')?.value;
-  }
-
-  submit() {
-    if (this.form.valid) {
-      this._snackBar.open('Right Answer', '')
-    } else {
-      this._snackBar.open('Wrong Answer', '')
-    }
+    this.datePickerForm = fb.group({
+      date: [null, [Validators.required]]
+    })
   }
 }
