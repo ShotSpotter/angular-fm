@@ -1,6 +1,9 @@
-import {Component, forwardRef, OnInit} from '@angular/core';
+import {Component, ElementRef, forwardRef, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors} from "@angular/forms";
 import {Subject} from "rxjs";
+import {debounceTime, distinctUntilChanged, filter, map, switchMap} from "rxjs/operators";
+import {GenericService} from "./generic.service";
+import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 
 @Component({
   selector: 'app-typeahead',
@@ -24,9 +27,11 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
 
   touched = false;
   disabled = false;
+  filteredOptions: any[] = [];
+  @ViewChild('typeaheadInput', {static: true}) typeaheadInput!: ElementRef;
   private _$textChangeSubs = new Subject();
 
-  constructor() {
+  constructor(private gnService: GenericService) {
   }
 
   ngOnInit(): void {
@@ -43,24 +48,9 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
   onTouched = () => {
   };
 
-  onMatch(value: string) {
-    this.markAsTouched();
-    if (!this.disabled) {
-      this.selected = value;
-      this.onChange(this.selected);
-    }
-  }
-
-  onNoMatch() {
-    this.markAsTouched();
-    if (!this.disabled) {
-      this.selected = '';
-      this.onChange(this.selected);
-    }
-  }
-
   writeValue(text: string) {
     this.selected = text;
+    this.typeaheadInput.nativeElement.value = text;
   }
 
   registerOnChange(onChange: any) {
@@ -86,27 +76,73 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
     const text = control.value;
     if (!this.isValid(text)) {
       return {
-        mustBePositive: {
-          text: text
+        required: {
+          text: 'Option must be selected'
         }
       };
     }
     return null;
   }
 
+  isValid(value: string) {
+    return !!value;
+  }
+
+  /**
+   * Typeahead related.
+   */
+
+  displayText(option: any) {
+    return option?.name;
+  }
+
+  onOptionSelect(event: MatAutocompleteSelectedEvent) {
+    this._updateControl(event.option.value);
+    this.filteredOptions = [];
+  }
+
+  private _updateControl(option: any) {
+    this.markAsTouched();
+    if (!this.disabled) {
+      this.selected = option.id;
+      this.onChange(this.selected);
+      this.writeValue(option.name);
+    }
+  }
+
+  private _invalidatedControl() {
+    this.markAsTouched();
+    if (!this.disabled) {
+      this.selected = '';
+      this.onChange(this.selected);
+    }
+  }
+
   private _onTextChange() {
     this._$textChangeSubs
-      .pipe()
+      .pipe(
+        // startWith(''),
+        filter((text: any) => {
+          this._invalidatedControl(); // invalidate the control.
+          return text.length >= 3;
+        }),
+        debounceTime(1000),
+        distinctUntilChanged(),
+        switchMap(val => {
+          return this._filter(val || '');
+        })
+      )
       .subscribe((value: any) => {
-        if (value && this.isValid(value)) {
-          this.onMatch(value);
-        } else {
-          this.onNoMatch();
-        }
+        this.filteredOptions = value;
       })
   }
 
-  private isValid(value: string) {
-    return value == '0' || value == '7';
+  private _filter(value: string) {
+    return this.gnService.getUsers()
+      .pipe(
+        map(response => response.filter((option: any) => {
+          return option.name.toLowerCase().indexOf(value.toLowerCase()) > -1;
+        }))
+      )
   }
 }

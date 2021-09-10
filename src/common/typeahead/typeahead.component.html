@@ -2,8 +2,13 @@
 
   <div>
     <mat-form-field>
-      <mat-label>Your Guess of numbers</mat-label>
-      <input #typeaheadInput type="text" matInput (input)="onType(typeaheadInput.value)" [value]="selected" [disabled]="disabled">
+      <mat-label>People Search</mat-label>
+      <input #typeaheadInput type="text" matInput (input)="onType(typeaheadInput.value)" [value]="selected" [disabled]="disabled" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayText" (optionSelected)="onOptionSelect($event)">
+        <mat-option *ngFor="let option of filteredOptions" [value]="option">
+          {{option?.name}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </div>
 
