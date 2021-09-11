@@ -15,7 +15,7 @@ export class AppComponent {
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) {
     this.typeaheadForm = fb.group({
-      name: ['', [Validators.required]],
+      name: [null, [Validators.required]],
     });
 
     this.datePickerForm = fb.group({

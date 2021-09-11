@@ -1,5 +1,5 @@
-import {Component, ElementRef, forwardRef, OnInit, ViewChild} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from "@angular/forms";
+import {Component, ElementRef, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AbstractControl, ControlValueAccessor, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators} from "@angular/forms";
 import {Subject} from "rxjs";
 import * as moment from "moment";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
@@ -13,15 +13,13 @@ import {MatDatepickerInputEvent} from "@angular/material/datepicker";
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DatePickerComponent),
       multi: true
-    }, {
-      provide: NG_VALIDATORS,
-      useExisting: DatePickerComponent,
-      multi: true
     }
   ]
 })
-export class DatePickerComponent implements OnInit, ControlValueAccessor, Validator {
+export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
+  @Input() label!: string;
+  formGroup!: FormGroup;
   date!: any;
   touched = false;
   disabled = false;
@@ -29,7 +27,10 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor, Valida
   @ViewChild('datepicker', {static: true}) datepicker!: ElementRef;
   private _$textChangeSubs = new Subject();
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+      'date': [null]
+    })
   }
 
   onChange = (date: any) => {
@@ -64,10 +65,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor, Valida
     this.date = date;
     const dateStr = this._formatDate(this.date);
     this.datepicker.nativeElement.value = dateStr == 'Invalid date' ? '' : dateStr;
-  }
-
-  validate(control: AbstractControl): ValidationErrors | null {
-    return null;
   }
 
   /**

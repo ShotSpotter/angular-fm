@@ -1,8 +1,9 @@
-<div class="p-0">
+<div class="p-0" [formGroup]="formGroup">
   <mat-form-field>
-    <mat-label>Date</mat-label>
-    <input matInput [matDatepicker]="picker" #datepicker (keydown)="inputFormat($event, datepicker.value)" (dateChange)="onDatepickerDate($event)">
+    <mat-label>{{label}}</mat-label>
+    <input matInput [matDatepicker]="picker" #datepicker (keydown)="inputFormat($event, datepicker.value)" (dateChange)="onDatepickerDate($event)" formControlName="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="!formGroup.valid">{{label}} is required</mat-error>
   </mat-form-field>
 </div>

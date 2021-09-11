@@ -10,7 +10,7 @@
 
       <mat-card-content>
         <div [formGroup]="typeaheadForm" class="col-12">
-          <app-typeahead formControlName="name"></app-typeahead>
+          <app-typeahead formControlName="name" [label]="'Search People'"></app-typeahead>
         </div>
         <div class="col-12 px-2">
           <label class="text-muted">Control Value: </label>{{typeaheadForm.get('name')?.value}}
@@ -20,11 +20,11 @@
       <mat-card-footer>
         <div class="col-12">
           <mat-card-actions class="m-0 p-0">
-            <button mat-button [disabled]="!typeaheadForm.get('name')?.errors" color="warn">
+            <button mat-button [disabled]="typeaheadForm.valid" color="warn">
               Invalid
             </button>
             <mat-divider></mat-divider>
-            <button mat-button [disabled]="!!typeaheadForm.get('name')?.errors" color="primary">
+            <button mat-button [disabled]="!typeaheadForm.valid" color="primary">
               Valid
             </button>
           </mat-card-actions>
@@ -42,7 +42,7 @@
 
       <mat-card-content>
         <div [formGroup]="datePickerForm" class="col-12">
-          <app-date-picker formControlName="date"></app-date-picker>
+          <app-date-picker formControlName="date" label="Date"></app-date-picker>
         </div>
         <div class="col-12 px-2">
           <label class="text-muted">Control Value: </label>{{datePickerForm.get('date')?.value}}
@@ -52,11 +52,11 @@
       <mat-card-footer>
         <div class="col-12">
           <mat-card-actions class="m-0 p-0">
-            <button mat-button [disabled]="!datePickerForm.get('date')?.errors" color="warn">
+            <button mat-button [disabled]="datePickerForm.valid" color="warn">
               Invalid
             </button>
             <mat-divider></mat-divider>
-            <button mat-button [disabled]="!!datePickerForm.get('date')?.errors" color="primary">
+            <button mat-button [disabled]="!datePickerForm.valid" color="primary">
               Valid
             </button>
           </mat-card-actions>

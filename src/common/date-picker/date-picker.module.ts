@@ -3,13 +3,16 @@ import {DatePickerComponent} from "./date-picker.component";
 import {MaterialModule} from "../material.module";
 import {DefaultDatePickerAdapter} from "./default-date-adapter.service";
 import {DateAdapter} from "@angular/material/core";
-import {DatePickerService} from "./date-picker.service";
+import {CommonModule} from "@angular/common";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     DatePickerComponent
   ],
   imports: [
+    CommonModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   exports: [

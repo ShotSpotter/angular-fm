@@ -1,5 +1,5 @@
-import {Component, ElementRef, forwardRef, OnInit, ViewChild} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors} from "@angular/forms";
+import {Component, ElementRef, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AbstractControl, ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Subject} from "rxjs";
 import {debounceTime, distinctUntilChanged, filter, map, switchMap} from "rxjs/operators";
 import {GenericService} from "./generic.service";
@@ -14,24 +14,24 @@ import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => TypeaheadComponent),
       multi: true
-    }, {
-      provide: NG_VALIDATORS,
-      useExisting: TypeaheadComponent,
-      multi: true
     }
   ]
 })
 export class TypeaheadComponent implements OnInit, ControlValueAccessor {
 
+  @Input() label!: string;
+  formGroup!: FormGroup;
   selected!: string;
-
   touched = false;
   disabled = false;
   filteredOptions: any[] = [];
   @ViewChild('typeaheadInput', {static: true}) typeaheadInput!: ElementRef;
   private _$textChangeSubs = new Subject();
 
-  constructor(private gnService: GenericService) {
+  constructor(private gnService: GenericService, private fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+      'typeahead': [null, [this.typeaheadValidator.bind(this)]]
+    })
   }
 
   ngOnInit(): void {
@@ -72,18 +72,6 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
     this.disabled = disabled;
   }
 
-  validate(control: AbstractControl): ValidationErrors | null {
-    const text = control.value;
-    if (!this.isValid(text)) {
-      return {
-        required: {
-          text: 'Option must be selected'
-        }
-      };
-    }
-    return null;
-  }
-
   isValid(value: string) {
     return !!value;
   }
@@ -101,6 +89,15 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
     this.filteredOptions = [];
   }
 
+  private typeaheadValidator(control: AbstractControl) {
+    if (this.touched && (this.selected == null || this.selected.length == 0)) {
+      return {
+        typeahead: 'required'
+      }
+    }
+    return null;
+  }
+
   private _updateControl(option: any) {
     this.markAsTouched();
     if (!this.disabled) {
@@ -108,6 +105,7 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
       this.onChange(this.selected);
       this.writeValue(option.name);
     }
+    this.formGroup.get('typeahead')?.updateValueAndValidity();
   }
 
   private _invalidatedControl() {
@@ -116,6 +114,7 @@ export class TypeaheadComponent implements OnInit, ControlValueAccessor {
       this.selected = '';
       this.onChange(this.selected);
     }
+    this.formGroup.get('typeahead')?.updateValueAndValidity();
   }
 
   private _onTextChange() {
