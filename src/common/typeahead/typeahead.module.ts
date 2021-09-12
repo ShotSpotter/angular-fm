@@ -1,8 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TypeaheadComponent} from "./typeahead.component";
-import {MaterialModule} from "../material.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 
 @NgModule({
@@ -15,7 +17,10 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MaterialModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule
   ]
 })
-export class TypeaheadModule { }
+export class TypeaheadModule {
+}

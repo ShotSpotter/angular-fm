@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {DatePickerModule} from "../common/date-picker/date-picker.module";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {SelectModule} from "../common/select/select.module";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
     MaterialModule,
     MatMomentDateModule,
     TypeaheadModule,
-    DatePickerModule
+    DatePickerModule,
+    SelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

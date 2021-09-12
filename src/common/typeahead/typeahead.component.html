@@ -1,16 +1,12 @@
-<div class="p-0">
-
-  <div [formGroup]="formGroup">
-    <mat-form-field>
-      <mat-label>{{label}}</mat-label>
-      <input #typeaheadInput type="text" matInput (input)="onType(typeaheadInput.value)" [value]="selected" [matAutocomplete]="auto" formControlName="typeahead">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayText" (optionSelected)="onOptionSelect($event)">
-        <mat-option *ngFor="let option of filteredOptions" [value]="option">
-          {{option?.name}}
-        </mat-option>
-      </mat-autocomplete>
-      <mat-error *ngIf="!formGroup.valid">{{label}} is required</mat-error>
-    </mat-form-field>
-  </div>
-
+<div [formGroup]="formGroup" class="p-0 m-0">
+  <mat-form-field>
+    <mat-label>{{label}}</mat-label>
+    <input #typeaheadInput type="text" matInput (input)="onType(typeaheadInput.value)" [value]="selected" [matAutocomplete]="auto" formControlName="typeahead">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayText" (optionSelected)="onOptionSelect($event)">
+      <mat-option *ngFor="let option of filteredOptions" [value]="option">
+        {{option?.name}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="!formGroup.valid">{{label}} is required</mat-error>
+  </mat-form-field>
 </div>
