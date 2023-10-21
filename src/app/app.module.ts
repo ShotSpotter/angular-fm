@@ -3,14 +3,13 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TypeaheadModule} from "../common/typeahead/typeahead.module";
-import {MaterialModule} from "../common/material.module";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {DatePickerModule} from "../common/date-picker/date-picker.module";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
-import {SelectModule} from "../common/select/select.module";
+import {RouterModule} from "@angular/router";
+import {MaterialModule} from "../common/material.module";
+import {AppService} from "./components/app.service";
 
 @NgModule({
   declarations: [
@@ -25,11 +24,14 @@ import {SelectModule} from "../common/select/select.module";
     HttpClientModule,
     MaterialModule,
     MatMomentDateModule,
-    TypeaheadModule,
-    DatePickerModule,
-    SelectModule
+    RouterModule.forRoot(
+      [
+        {path: '', loadChildren: () => import('./components/main.module').then(m => m.MainModule)}
+      ],
+      {enableTracing: false} // <-- debugging purposes only
+    )
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

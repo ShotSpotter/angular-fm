@@ -1,30 +1,39 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {AppService} from "./components/app.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {filter} from "rxjs/operators";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <div class="container-fluid">
+      <h1 class="text-center my-5">
+        <a [routerLink]="'/main'" class="text-dark">{{title}}</a>
+      </h1>
+      <router-outlet></router-outlet>
+    </div>`
 })
-export class AppComponent {
-  title = 'components';
 
-  typeaheadForm: FormGroup;
-  datePickerForm: FormGroup;
-  selectForm: FormGroup;
+export class AppComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) {
-    this.typeaheadForm = fb.group({
-      name: [null, [Validators.required]],
-    });
+  title = 'Angular Demo';
+  currentViewComponent: string = ''
 
-    this.datePickerForm = fb.group({
-      date: [null, [Validators.required]]
-    })
-
-    this.selectForm = fb.group({
-      select: [null, [Validators.required]]
-    })
+  constructor(
+    private appService: AppService,
+    private snackbar: MatSnackBar,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
   }
+
+  ngOnInit() {
+    this.appService.get()
+      .pipe(filter(m => !!m))
+      .subscribe(message => {
+        this.snackbar.open(message), '!', {duration: 5000};
+      })
+  }
+
 }

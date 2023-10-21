@@ -7,6 +7,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   exports: [
@@ -18,9 +19,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatCardModule,
     MatDividerModule,
     MatDatepickerModule,
+    MatIconModule
   ],
-  imports: [
-
-  ]
+  imports: []
 })
-export class MaterialModule { }
+export class MaterialModule {
+}
