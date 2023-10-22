@@ -22,8 +22,8 @@ import {Component} from '@angular/core';
 export class FeatureComponent {
 
   items = [
-    {url: '/lifecycle', title: 'Lifecycle', icon: 'recycling'},
-    {url: '/services', title: 'Services', icon: 'lan'},
+    {url: '/lifecycle', title: 'Component Lifecycle', icon: 'recycling'},
+    {url: '/services', title: 'DI & Services', icon: 'lan'},
     {url: '/directives', title: 'Directives', icon: 'settings_applications'},
     {url: '/subscriptions', title: 'Subscriptions', icon: 'card_membership'}
   ]
