@@ -23,7 +23,7 @@ export class NoMemoryLeakSubscriptionComponent extends AbstractSubscriptionCompo
 
   ngOnDestroy(): void {
     super.ngOnDestroy();
-    this.sharedService.post(`NoMemoryLeakSubscriptionComponent: I am destroyed and won't send any messages.`)
+    this.sharedService.post(`NoMemoryLeakSubscriptionComponent (Inactive): I am destroyed and won't send any messages. ${new Date().toLocaleString()}`)
   }
 
 }
