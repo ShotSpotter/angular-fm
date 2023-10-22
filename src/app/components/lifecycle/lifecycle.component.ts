@@ -17,7 +17,7 @@ import {timer} from "rxjs";
           <app-after-view-checked [person]="person"></app-after-view-checked>
         </div>
       </div>
-    </div>s
+    </div>
   `
 })
 export class LifecycleComponent implements OnInit {
@@ -25,7 +25,7 @@ export class LifecycleComponent implements OnInit {
   person: { name: string, age: number, message?: string } = {name: 'John Smith', age: 10, message: 'Hello World'}
 
   ngOnInit() {
-    timer(1000, 2000)
+    timer(1000, 1500)
       .subscribe(n => {
         this.person.age = this.person.age + 1;
         this.person.message = `Hello world ${n}`

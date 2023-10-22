@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {ComponentService} from "./shared-component.service";
 import {Subject, timer} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import {SharedService} from "../../common/shared.service";
 
 @Component({
   selector: 'app-parent',
@@ -9,6 +9,9 @@ import {takeUntil} from "rxjs/operators";
     <div class="container-fluid">
       <h2 class="text-center my-3">Services (Dependency Injection - DI) </h2>
       <div class="container">
+        <p>
+          <img [src]="'https://miro.medium.com/v2/resize:fit:1155/1*egFAOdlpUBQPzyl1jb7p7A.png'" alt=""/>
+        </p>
         <p class="paragraph">
           <b>First</b> & <b>Second</b> components are composed in <b>Parent</b> Component <code>(ServiceParentComponent)</code>. <b>Parent</b> provides <code>ComponentService</code>.
           <b>First</b> Child doesnt provide however gets the service injected because of the Injection hierarchy.
@@ -20,16 +23,15 @@ import {takeUntil} from "rxjs/operators";
         <app-service-second-child></app-service-second-child>
       </div>
     </div>
-
   `,
-  providers: [ComponentService]
+  providers: [SharedService]
 })
 export class ServiceParentComponent implements OnInit, OnDestroy {
 
   private _destroy$ = new Subject();
 
   constructor(
-    private sharedComponentService: ComponentService
+    private SharedService: SharedService
   ) {
   }
 
@@ -37,7 +39,7 @@ export class ServiceParentComponent implements OnInit, OnDestroy {
     timer(0, 1000)
       .pipe(takeUntil(this._destroy$))
       .subscribe(count => {
-        this.sharedComponentService.push(`${count}`);
+        this.SharedService.post(`${count}`);
       })
   }
 

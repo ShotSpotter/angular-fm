@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {ComponentService} from "./shared-component.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import {SharedService} from "../../common/shared.service";
 
 @Component({
   selector: 'app-service-second-child',
@@ -12,7 +12,7 @@ import {takeUntil} from "rxjs/operators";
       </div>
     </div>
   `,
-  providers: [ComponentService]
+  providers: [SharedService]
 })
 export class ServiceSecondChildComponent implements OnInit, OnDestroy {
 
@@ -20,12 +20,12 @@ export class ServiceSecondChildComponent implements OnInit, OnDestroy {
   data: any;
 
   constructor(
-    private sharedComponentService: ComponentService
+    private sharedService: SharedService
   ) {
   }
 
   ngOnInit(): void {
-    this.sharedComponentService.pull()
+    this.sharedService.receive()
       .pipe(takeUntil(this._destroy$))
       .subscribe(data => this.data = data);
   }
