@@ -58,6 +58,7 @@ import {SharedService} from "../../common/shared.service";
             </pre>
             </code>
           </div>
+          <div>For more check <a href="https://angular.io/guide/dependency-injection-providers">@Angular DI Doc</a></div>
         </div>
 
         <h2 class="m-0 mt-1 paragraph p-2 text-center">
