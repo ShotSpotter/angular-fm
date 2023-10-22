@@ -23,9 +23,9 @@ export class FeatureComponent {
 
   items = [
     {url: '/lifecycle', title: 'Lifecycle', icon: 'recycling'},
-    {url: '/subscriptions', title: 'Subscriptions', icon: 'card_membership'},
     {url: '/services', title: 'Services', icon: 'lan'},
     {url: '/directives', title: 'Directives', icon: 'settings_applications'},
+    {url: '/subscriptions', title: 'Subscriptions', icon: 'card_membership'}
   ]
 
 }
