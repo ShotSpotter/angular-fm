@@ -11,7 +11,7 @@ import {FeatureComponent} from "./feature.component";
         path: 'main', component: MainComponent, children: [
           {path: '', component: FeatureComponent},
           {path: 'lifecycle', loadChildren: () => import('./lifecycle/lifecycle.module').then(m => m.LifecycleModule)},
-          {path: 'services', loadChildren: () => import('./service/service-component.module').then(m => m.ServiceComponentModule)},
+          {path: 'services', loadChildren: () => import('./services/service-component.module').then(m => m.ServiceComponentModule)},
           {path: 'subscriptions', loadChildren: () => import('./subscriptions/subscriptions.module').then(m => m.SubscriptionsModule)},
         ]
       },

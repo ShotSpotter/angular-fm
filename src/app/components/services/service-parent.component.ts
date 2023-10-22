@@ -7,13 +7,13 @@ import {takeUntil} from "rxjs/operators";
   selector: 'app-parent',
   template: `
     <div class="container-fluid">
-      <h2 class="text-center my-3">Services</h2>
+      <h2 class="text-center my-3">Services (Dependency Injection - DI) </h2>
       <div class="container">
         <p class="paragraph">
-          First & Second Child components composed in Parent Component <code>(ServiceParentComponent)</code>. Parent provides <code>ComponentService</code>.
-          First Child doesnt provide however gets the service injected because of the Injection hierarchy.
-          Second Child, however, provides it's own <code>ComponentService</code>.
-          ParentComponent uses <code>RxJS</code> timer to emit values every 5 seconds. Since, the Parent and Fist child share the same service, first child
+          <b>First</b> & <b>Second</b> components are composed in <b>Parent</b> Component <code>(ServiceParentComponent)</code>. <b>Parent</b> provides <code>ComponentService</code>.
+          <b>First</b> Child doesnt provide however gets the service injected because of the Injection hierarchy.
+          <b>Second</b> Child, however, provides it's own <code>ComponentService</code>.
+          <b>Parent</b> uses <code>RxJS</code> timer to emit values every 5 seconds. Since, the <b>Parent</b> and Fist child share the same service, first child
           gets emitted value. However, as a separate instance is created in case of 2nd child, the value emitted from parent is not passed to 2nd child.
         </p>
         <app-service-first-child></app-service-first-child>
