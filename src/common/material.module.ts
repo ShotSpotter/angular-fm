@@ -13,9 +13,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   exports: [
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
@@ -29,7 +31,7 @@ import {FormsModule} from "@angular/forms";
     MatButtonToggleModule,
     MatRadioModule,
     MatCheckboxModule,
-    FormsModule
+    MatListModule
   ],
   imports: []
 })

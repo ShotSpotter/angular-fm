@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
   selector: 'app-main',
   template: `
     <div class="container-fluid">
-      <h2 class="text-center my-3">Features</h2>
+      <h2 class="text-center my-3">Topic</h2>
       <div class="container">
         <div class="grid-features p-0">
 
