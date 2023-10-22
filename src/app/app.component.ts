@@ -1,8 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {AppService} from "./components/app.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {filter} from "rxjs/operators";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,25 +11,8 @@ import {ActivatedRoute, Router} from "@angular/router";
     </div>`
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'Angular Demo';
-  currentViewComponent: string = ''
-
-  constructor(
-    private appService: AppService,
-    private snackbar: MatSnackBar,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
-  }
-
-  ngOnInit() {
-    this.appService.get()
-      .pipe(filter(m => !!m))
-      .subscribe(message => {
-        this.snackbar.open(message), '!', {duration: 5000};
-      })
-  }
 
 }

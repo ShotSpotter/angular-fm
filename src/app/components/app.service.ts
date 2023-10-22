@@ -1,16 +1,17 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
+import {timer} from "rxjs";
+import {map} from "rxjs/operators";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  }
+)
 export class AppService {
 
-  private _message$ = new BehaviorSubject<any>(null);
+  private _currentDateTime = timer(1, 1000)
+    .pipe(map(_ => new Date().toLocaleString()))
 
-  post(msg: string): void {
-    this._message$.next(msg);
-  }
-
-  get() {
-    return this._message$.asObservable();
+  currentDateTime() {
+    return this._currentDateTime;
   }
 }

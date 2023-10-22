@@ -1,9 +1,7 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable()
 export class SharedService {
 
   private _post$ = new BehaviorSubject<any>(null);

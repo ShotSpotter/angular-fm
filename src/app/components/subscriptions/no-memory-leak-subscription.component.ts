@@ -1,33 +1,29 @@
 import {Component} from "@angular/core";
-import {takeUntil, tap} from "rxjs/operators";
-import {MemoryLeakSubscriptionComponent} from "./memory-leak-subscription.component";
-import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
+import {AbstractSubscriptionComponent} from "./abstract-subscription.component";
 
 @Component({
   selector: 'app-memory-leak-subscription',
   template: `
-    <div class="container-fluid">
-      <div class="container">
-        <p>Message from subscription: {{message}}</p>
-      </div>
+    <div class="w-100">
+      <h2 class="text-center">NoMemoryLeakSubscriptionComponent</h2>
+      <p class="text-center">I am a good component cause I don't leak memories...</p>
     </div>
   `
 })
-export class NoMemoryLeakSubscriptionComponent extends MemoryLeakSubscriptionComponent {
-
-  private _destroy$ = new Subject();
+export class NoMemoryLeakSubscriptionComponent extends AbstractSubscriptionComponent {
 
   ngOnInit() {
-    this.sharedService.receive()
-      .pipe(
-        tap(message => this.appService.post(`Message from ${this.constructor?.name}: ${message}`)),
-        takeUntil(this._destroy$)
-      )
-      .subscribe();
+    this.appService.currentDateTime()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe(message => {
+        this.sharedService.post(`NoMemoryLeakSubscriptionComponent (Active): ${message}`)
+      });
   }
 
   ngOnDestroy(): void {
-    alert(`I (${this.constructor?.name}) am being destroyed and my subscriptions will be destroyed as well...`)
+    super.ngOnDestroy();
+    this.sharedService.post(`NoMemoryLeakSubscriptionComponent: I am destroyed and won't send any messages.`)
   }
 
 }

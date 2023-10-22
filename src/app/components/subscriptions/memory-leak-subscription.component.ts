@@ -1,42 +1,27 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
-import {SharedService} from "../../common/shared.service";
-import {AppService} from "../app.service";
-import {tap} from "rxjs/operators";
+import {Component} from "@angular/core";
+import {AbstractSubscriptionComponent} from "./abstract-subscription.component";
 
 @Component({
   selector: 'app-memory-leak-subscription',
   template: `
-    <div class="container-fluid">
-      <div class="container">
-        <p>Message from subscription: {{message}}</p>
-      </div>
+    <div class="w-100">
+      <h2 class="text-center">MemoryLeakSubscriptionComponent</h2>
+      <p class="text-center">I am a bad component cause I leak memories...</p>
     </div>
   `
 })
-export class MemoryLeakSubscriptionComponent implements OnInit, OnDestroy {
+export class MemoryLeakSubscriptionComponent extends AbstractSubscriptionComponent {
 
-  message: any;
+  text: string = 'MemoryLeakSubscriptionComponent (Active): '
 
-  constructor(
-    protected sharedService: SharedService,
-    protected appService: AppService
-  ) {
-  }
-
-  /**
-   * Subscribes to SharedService and with pipe operator repost that message to AppService.
-   * The subscriptions are live and will continue to live on even the component is destroyed causing ML.
-   */
   ngOnInit() {
-    this.sharedService.receive()
-      .pipe(
-        tap(message => this.appService.post(`Message from ${this.constructor?.name}: ${message}`))
-      )
-      .subscribe();
+    this.appService.currentDateTime()
+      .subscribe(message => this.sharedService.post(`${this.text} ${message}`));
   }
 
   ngOnDestroy(): void {
-    alert(`I (${this.constructor?.name}) am being destroyed but my subscription will live forever...`)
+    super.ngOnDestroy();
+    this.text = 'MemoryLeakSubscriptionComponent (Inactive): I am destroyed but sending you message. Do you know what is going on???'
   }
 
 }

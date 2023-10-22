@@ -9,7 +9,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {RouterModule} from "@angular/router";
 import {MaterialModule} from "../common/material.module";
-import {AppService} from "./components/app.service";
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import {AppService} from "./components/app.service";
       {enableTracing: false} // <-- debugging purposes only
     )
   ],
-  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

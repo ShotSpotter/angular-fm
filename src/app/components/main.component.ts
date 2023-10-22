@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {timer} from "rxjs";
-import {SharedService} from "../common/shared.service";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -10,19 +8,6 @@ import {SharedService} from "../common/shared.service";
     </div>
   `
 })
-export class MainComponent implements OnInit {
-
-  constructor(
-    private sharedService: SharedService
-  ) {
-  }
-
-  ngOnInit(): void {
-    timer(0, 1000)
-      .subscribe(_ => {
-        const message = new Date().toLocaleString();
-        this.sharedService.post(message)
-      })
-  }
+export class MainComponent  {
 
 }

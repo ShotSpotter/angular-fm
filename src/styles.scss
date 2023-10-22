@@ -20,6 +20,10 @@ body {
   padding: 5px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .mat-card {
   box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
 }
@@ -68,4 +72,10 @@ body {
   .mat-card {
     height: 100% !important;
   }
+}
+
+.grid-subscriptions {
+  @extend .grid-lifecycle;
+  grid-template-columns: repeat(2, 300px) !important;
+  justify-content: center !important;
 }
