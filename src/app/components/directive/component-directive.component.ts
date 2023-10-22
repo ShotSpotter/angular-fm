@@ -12,7 +12,7 @@ import {Component} from "@angular/core";
           </p>
           <div class="text-center">
             <code>
-              <pre class="d-inline-flex text-left">
+              <pre class="d-inline-flex text-start">
                {{codeBlock}}
               </pre>
             </code>

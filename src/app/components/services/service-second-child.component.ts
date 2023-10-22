@@ -8,7 +8,11 @@ import {SharedService} from "../../common/shared.service";
   template: `
     <div class="container-fluid">
       <div class="container">
-        <app-block-component class="col-12 col-md-6" title="Second Child" [text]="data"></app-block-component>
+        <div class="paragraph">
+          <h1><code>Second Child</code></h1>
+          <p>I am the Second child component of my parent and I do not share the same <b>service</b> that my parent declared. I declared and I will get a different service instance injected.</p>
+          <label class="fw-bold">Messaged Received from Parent: <code>{{data}}</code></label>
+        </div>
       </div>
     </div>
   `,

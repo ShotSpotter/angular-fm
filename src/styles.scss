@@ -26,10 +26,6 @@ body {
   padding: 5px;
 }
 
-.text-left {
-  text-align: left;
-}
-
 .active-link {
   background-color: #3f51b5 !important;
   color: #fff !important;
@@ -112,6 +108,14 @@ body {
 .grid-directives {
   @include grid(3, 'auto-fill');
   justify-content: center !important;
+}
+
+.grid-services {
+  @include grid(2, 'auto-fill');
+
+  .mat-card {
+    height: 100% !important;
+  }
 }
 
 .grid-directives-components {

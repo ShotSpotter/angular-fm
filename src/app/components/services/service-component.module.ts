@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {ServiceParentComponent} from "./service-parent.component";
+import {ServiceComponent} from "./service.component";
 import {SharedModule} from "../../common/shared.module";
 import {ServiceFirstChildComponent} from "./service-first-child.component";
 import {ServiceSecondChildComponent} from "./service-second-child.component";
@@ -8,7 +8,7 @@ import {RouterModule} from "@angular/router";
 // Route Module
 @NgModule({
   imports: [
-    RouterModule.forChild([{path: '', component: ServiceParentComponent}])
+    RouterModule.forChild([{path: '', component: ServiceComponent}])
   ],
   exports: [
     RouterModule
@@ -19,7 +19,7 @@ export class ServiceComponentRouteModule {
 
 @NgModule({
   declarations: [
-    ServiceParentComponent,
+    ServiceComponent,
     ServiceFirstChildComponent,
     ServiceSecondChildComponent
   ],
