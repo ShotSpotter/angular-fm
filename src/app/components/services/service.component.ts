@@ -10,7 +10,9 @@ import {SharedService} from "../../common/shared.service";
       <h2 class="text-center my-3">Dependency Injection (DI) & Services in Angular</h2>
       <div class="container">
         <div class="paragraph">
-          <code>Dependency Injection</code> pattern is all about passing object to the dependent code. The real benefit of <code>DI</code> is that it provides loose coupling.
+          <code>Dependency Injection</code> pattern is all about passing object to the dependent code.
+          You don't have to deal with creating or instantiating dependent object in your class. You just have a framework or assembler create/instantiate and pass that dependency to you.
+          The real benefit of <code>DI</code> is that it provides loose coupling.
           With loose coupling we can substitute the dependency with any other class of same type. In <b>Angular</b>, <code>DI</code> is performed through constructor.
           In <b>Angular</b> dependency are mostly service classes but is not limited to services only. String or function can also be used for dependency.
 
@@ -115,7 +117,7 @@ export class ServiceComponent implements OnInit, OnDestroy {
         providers: [
           AnotherService,
           {
-            provider: myServiceFactory,
+            provider: myServiceFactory, // dependency token
             useFactory: myServiceFactory,
             deps: [AnotherService]
           }
@@ -125,7 +127,7 @@ export class ServiceComponent implements OnInit, OnDestroy {
   `
   dependencyConsumerComponent = `
     @Component({
-      selector: 'hero-list',
+      selector: 'app-my-component',
       template: '...',
       providers: [MyService]
     })

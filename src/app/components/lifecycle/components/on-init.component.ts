@@ -7,7 +7,7 @@ import {AbstractLifecycleComponent} from "../abstract-lifecycle.component";
     <app-person [name]="name" [age]="age" [message]="message">
       <h1 title class="text-center">OnInit <code>(ngOnInit)</code></h1>
       <ul content>
-        <li>Called only once when ng initializes the directive or component after first <code>ngOnChanges()</code>.</li>
+        <li>Called only once when <code>ng</code> initializes the directive or component after first <code>ngOnChanges()</code>.</li>
         <li>Used for initializing the component such as API calls etc.</li>
       </ul>
     </app-person>

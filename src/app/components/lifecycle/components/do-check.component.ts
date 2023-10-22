@@ -8,7 +8,7 @@ import {AbstractLifecycleComponent} from "../abstract-lifecycle.component";
       <h1 title class="text-center">DoCheck <code>(ngDoCheck)</code></h1>
       <ul content>
         <li>Called immediately after <code>ngOnChanges()</code> on every change detection run, and immediately after <code>ngOnInit()</code> on the first run.</li>
-        <li>Used for detect changes that ng can’t/won’t detect. E.g., content in an array.</li>
+        <li>Used for detecting changes that <code>ng</code>  can’t/won’t detect. E.g., content in an array.</li>
       </ul>
     </app-person>
   `

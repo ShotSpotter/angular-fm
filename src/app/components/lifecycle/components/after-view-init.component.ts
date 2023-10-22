@@ -8,6 +8,7 @@ import {AbstractLifecycleComponent} from "../abstract-lifecycle.component";
       <h1 title class="text-center">AfterViewInit <code>(ngAfterViewInit)</code></h1>
       <ul content>
         <li>Called once after 1st <code>ngAfterContentChecked()</code> when <code>ng</code> initializes the component and the children views.</li>
+        <li>By the time this lifecycle event is triggered all views, including child views, are initialized. You can reference any child components using <code>@ViewChild</code> or <code>@ViewChildren</code> to pass any data on child component or do any logic.</li>
       </ul>
     </app-person>
   `,
