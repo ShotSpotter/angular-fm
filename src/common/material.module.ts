@@ -8,6 +8,11 @@ import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   exports: [
@@ -19,7 +24,12 @@ import {MatIconModule} from "@angular/material/icon";
     MatCardModule,
     MatDividerModule,
     MatDatepickerModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    FormsModule
   ],
   imports: []
 })

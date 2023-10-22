@@ -12,6 +12,9 @@ import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
           <span class="text-muted">{{text}}</span>
         </div>
       </mat-card-content>
+      <mat-card-footer>
+        <ng-content select="[footer]"></ng-content>
+      </mat-card-footer>
     </mat-card>
   `
 })

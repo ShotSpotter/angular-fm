@@ -13,6 +13,7 @@ import {FeatureComponent} from "./feature.component";
           {path: 'lifecycle', loadChildren: () => import('./lifecycle/lifecycle.module').then(m => m.LifecycleModule)},
           {path: 'services', loadChildren: () => import('./services/service-component.module').then(m => m.ServiceComponentModule)},
           {path: 'subscriptions', loadChildren: () => import('./subscriptions/subscriptions.module').then(m => m.SubscriptionsModule)},
+          {path: 'directives', loadChildren: () => import('./directive/directive.module').then(m => m.DirectiveModule)},
         ]
       },
       {path: '', redirectTo: 'main'}

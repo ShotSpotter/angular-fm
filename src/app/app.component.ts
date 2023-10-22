@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="container-fluid">
-      <h1 class="text-center my-5">
+      <h1 class="text-center py-3">
         <a [routerLink]="'/main'" class="text-dark">{{title}}</a>
       </h1>
       <router-outlet></router-outlet>

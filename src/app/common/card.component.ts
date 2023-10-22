@@ -22,10 +22,10 @@ export interface CardData {
           <mat-icon class="card-icon">{{data?.icon}}</mat-icon>
         </div>
         <div class="col-12 px-2" *ngIf="data?.content">
-          <span class="text-muted">{{data.content}}</span>
+          <span class="text-muted">{{data?.content}}</span>
         </div>
-        <div class="row" *ngIf="data.url">
-          <button mat-raised-button color="primary" [routerLink]="data.url">{{data.urlTitle}}</button>
+        <div class="row" *ngIf="data?.url">
+          <button mat-raised-button color="primary" [routerLink]="data.url">{{data.title}}</button>
         </div>
       </mat-card-content>
     </mat-card>

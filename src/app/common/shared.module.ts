@@ -16,10 +16,11 @@ import {RouterModule} from "@angular/router";
     RouterModule
   ],
   exports: [
+    RouterModule,
+    MaterialModule,
     BlockComponent,
     CardComponent,
-    CommonModule,
-    MaterialModule
+    CommonModule
   ]
 })
 export class SharedModule {

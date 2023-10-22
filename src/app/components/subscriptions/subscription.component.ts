@@ -10,8 +10,8 @@ import {SharedService} from "../../common/shared.service";
       <h2 class="text-center my-3">Subscriptions</h2>
       <div class="container">
         <div class="grid-subscriptions mb-5">
-          <mat-card *ngFor="let item of items" [routerLink]="item.url" class="cursor-pointer">
-            <mat-card-title class="text-center">{{item.urlTitle}}</mat-card-title>
+          <mat-card *ngFor="let item of items" [routerLink]="item.url" [routerLinkActive]="'active-link'" class="cursor-pointer">
+            <mat-card-title class="text-center">{{item.title}}</mat-card-title>
             <mat-card-content class="text-center">
               <mat-icon class="card-icon" [color]="item.color">{{item.icon}}</mat-icon>
             </mat-card-content>
@@ -35,8 +35,8 @@ export class SubscriptionComponent implements OnInit, OnDestroy {
   message: any = '';
 
   items = [
-    {url: 'bad', urlTitle: 'Bad Subscription', icon: 'close', color: 'warn'},
-    {url: 'good', urlTitle: 'Good Subscription', icon: 'check', color: 'primary'},
+    {url: 'bad', title: 'Bad Subscription', icon: 'close', color: 'warn'},
+    {url: 'good', title: 'Good Subscription', icon: 'check', color: 'primary'},
   ]
 
   constructor(
