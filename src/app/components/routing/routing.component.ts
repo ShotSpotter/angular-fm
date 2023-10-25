@@ -13,11 +13,11 @@ import {Component, OnInit} from "@angular/core";
         </div>
 
         <div class="code text-center mb-3">
-          <code>
-              <pre class="d-inline-flex text-start">
+          <pre>
+              <code class="d-inline-flex text-start">
                {{routerModule}}
-              </pre>
-          </code>
+              </code>
+          </pre>
         </div>
         <router-outlet></router-outlet>
       </div>

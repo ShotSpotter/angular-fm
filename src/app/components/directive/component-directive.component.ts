@@ -9,11 +9,11 @@ import {Component} from "@angular/core";
         These are nothing but <code>@Component</code> that we create them or use them in our apps.
       </p>
       <div class="code text-center pt-5">
-        <code>
-              <pre class="d-inline-flex text-start">
+        <pre>
+              <code class="d-inline-flex text-start">
                {{codeBlock}}
-              </pre>
-        </code>
+              </code>
+        </pre>
       </div>
     </app-card-component>
   `

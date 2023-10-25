@@ -18,47 +18,47 @@ import {SharedService} from "../../common/shared.service";
 
           <div class="mt-5">
             <h2 class="m-0">Dependency</h2>
-            <code>
             <pre>
+            <code>
                {{dependency}}
-            </pre>
             </code>
+            </pre>
           </div>
           <div class="mt-2">
             <h2 class="m-0">Component level Dependency</h2>
             <label>When a provider is registered at the component level, a new instance of the service is created for each new instance of the component.</label>
-            <code>
             <pre>
+            <code>
                {{dependencyConsumerComponent}}
-            </pre>
             </code>
+            </pre>
           </div>
           <div class="mt-2">
             <h2 class="m-0">Module level Dependency</h2>
             <label>When a provider is registered at the module level, a new instance of the service is created and the same instance is shared within all the components, directives and pipes within that module.</label>
-            <code>
             <pre>
+            <code>
                {{dependencyConsumerModule}}
-            </pre>
             </code>
+            </pre>
           </div>
           <div class="mt-2">
             <h2 class="m-0">Root Level</h2>
             <label>When <code>providedIn: 'root'</code>, the service is available at the root application level, accessible to all the component, directives, pipes and modules in the app.</label>
-            <code>
             <pre>
+            <code>
                {{dependencyRoot}}
-            </pre>
             </code>
+            </pre>
           </div>
           <div class="mt-2">
             <h2 class="m-0">Dependency through function</h2>
             <label>A dependency can also be provided through function as seen below.</label>
-            <code>
             <pre>
+            <code>
                {{dependencyFunction}}
-            </pre>
             </code>
+            </pre>
           </div>
           <div>For more check <a href="https://angular.io/guide/dependency-injection-providers">@Angular DI Doc</a></div>
         </div>

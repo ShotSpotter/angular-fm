@@ -7,6 +7,9 @@ $transition-duration: 280ms;
 $transition-animation: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-default: all $transition-duration $transition-animation;
 
+$app-brand-height: 95px;
+$app-content-height: calc(100% - 95px);
+
 @keyframes scaleAnimation {
   0% {
     transform: scale(1);
