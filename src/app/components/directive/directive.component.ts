@@ -9,7 +9,6 @@ import {Component} from "@angular/core";
 
         <div class="paragraph mb-3">
           Directives are classes that add additional behavior to elements in your Angular applications.
-          Use Angular's built-in directives to manage forms, lists, styles, and what users see.
         </div>
 
         <div class="grid-directives mb-5">

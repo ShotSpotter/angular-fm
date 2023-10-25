@@ -14,6 +14,8 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {MatListModule} from "@angular/material/list";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatTreeModule} from "@angular/material/tree";
 
 @NgModule({
   exports: [
@@ -31,7 +33,9 @@ import {MatListModule} from "@angular/material/list";
     MatButtonToggleModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatSidenavModule,
+    MatTreeModule
   ],
   imports: []
 })

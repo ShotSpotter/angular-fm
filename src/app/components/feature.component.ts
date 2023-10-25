@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-main',
+  selector: 'app-feature',
   template: `
     <div class="container-fluid">
       <h2 class="text-center my-3">Topic</h2>
@@ -25,7 +25,8 @@ export class FeatureComponent {
     {url: '/lifecycle', title: 'Component Lifecycle', icon: 'recycling'},
     {url: '/services', title: 'DI & Services', icon: 'lan'},
     {url: '/directives', title: 'Directives', icon: 'settings_applications'},
-    {url: '/subscriptions', title: 'Subscriptions', icon: 'card_membership'}
+    {url: '/routing', title: 'Routing', icon: 'route'},
+    {url: '/subscriptions', title: 'RxJS Subscriptions', icon: 'card_membership'}
   ]
 
 }

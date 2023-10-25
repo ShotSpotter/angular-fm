@@ -7,7 +7,7 @@ import {SharedService} from "../../common/shared.service";
   selector: 'app-subscription',
   template: `
     <div class="container-fluid">
-      <h2 class="text-center my-3">Subscriptions</h2>
+      <h2 class="text-center my-3">RxJS Subscriptions</h2>
       <div class="container">
         <div class="grid-subscriptions mb-5">
           <mat-card *ngFor="let item of items" [routerLink]="item.url" [routerLinkActive]="'active-link'" class="cursor-pointer">

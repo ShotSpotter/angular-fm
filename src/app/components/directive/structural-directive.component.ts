@@ -5,7 +5,7 @@ import {MatButtonToggleChange} from "@angular/material/button-toggle";
   selector: 'app-structural-directive',
   template: `
     <app-card-component [data]="{title: 'Structural Directive'}">
-      <div class="paragraph">
+      <div class="paragraph mb-3">
         Structural directives are used to change the DOM layout by adding and removing DOM elements.
         <ul>
           <li><code>*ngFor</code> - can be used to add DOM element by iterating over the given array.</li>

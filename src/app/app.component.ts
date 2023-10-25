@@ -3,16 +3,21 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <div class="container-fluid">
-      <h1 class="text-center py-3">
-        <a [routerLink]="'/main'" class="text-dark">{{title}}</a>
-      </h1>
-      <router-outlet></router-outlet>
+    <div class="container-fluid app-container">
+      <div class="brand">
+        <span class="brand-img">
+          <img src="../assets/img/brand.png" alt="brand" [routerLink]="'/main'">
+        </span>
+        <span [routerLink]="'/main/features'" class="brand-name">{{title}}</span>
+      </div>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
     </div>`
 })
 
 export class AppComponent {
 
-  title = 'Angular Demo';
+  title = 'Brown Bag Series: Angular (ng)';
 
 }
