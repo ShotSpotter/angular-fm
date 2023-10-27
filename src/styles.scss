@@ -106,7 +106,7 @@ body {
 
     img {
       height: 5rem;
-      width: 8rem;
+      width: 6rem;
       filter: invert(20%) sepia(25%) saturate(25555%) hue-rotate(187deg) brightness(100%) contrast(50%);
     }
   }
@@ -136,19 +136,21 @@ body {
 
 .block {
   position: relative;
-  margin: .5rem 0;
-  padding: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 2.5rem;
   background-color: vars.$background-light-grey;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 4px;
-    background-color: var(--bs-pink);
-    transform-origin: 0 0;
+  .icon-container, .text {
+    flex-grow: 0;
+  }
+
+  .icon-container {
+    margin-right: 1rem;
+
+    mat-icon {
+      @include mixins.mat-icon-size(2rem);
+    }
   }
 
   &:hover {
@@ -156,7 +158,21 @@ body {
   }
 
   @media (max-width: 600px) {
-    padding: .5rem;
+    flex-wrap: wrap;
+    padding: 1rem .5rem;
+
+    .icon-container, .text {
+      flex-grow: 1;
+    }
+
+    .icon-container {
+      text-align: center;
+      margin-bottom: 3rem;
+
+      .mat-icon {
+        @include mixins.mat-icon-size(5rem);
+      }
+    }
   }
 }
 
@@ -202,6 +218,10 @@ code {
 
 .shadow {
   box-shadow: vars.$shadow-default;
+}
+
+.shadow-lite {
+  box-shadow: vars.$shadow-lite;
 }
 
 .scale {

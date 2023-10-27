@@ -8,7 +8,7 @@ import {RouterModule} from "@angular/router";
 // Route Module
 @NgModule({
   imports: [
-    RouterModule.forChild([{path: '', component: ServiceComponent}])
+    RouterModule.forChild([{path: '', component: ServiceComponent, data: {title: 'Dependency Injection & Services'}}])
   ],
   exports: [
     RouterModule

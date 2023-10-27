@@ -15,7 +15,7 @@ import {AfterViewCheckedComponent} from "./components/after-view-checked.compone
 // Route Module
 @NgModule({
   imports: [
-    RouterModule.forChild([{path: '', component: LifecycleComponent}])
+    RouterModule.forChild([{path: '', component: LifecycleComponent, data: {title: 'Component Lifecycle'}}])
   ],
   exports: [
     RouterModule

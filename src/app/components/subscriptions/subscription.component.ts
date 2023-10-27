@@ -2,12 +2,12 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
 import {SharedService} from "../../common/shared.service";
+import {SubscriptionData} from "./subscriptionData";
 
 @Component({
   selector: 'app-subscription',
   template: `
     <div class="container-fluid">
-      <h2 class="text-center my-3">RxJS Subscriptions</h2>
       <div class="container">
         <div class="grid-subscriptions mb-5">
           <mat-card *ngFor="let item of items" [routerLink]="item.url" [routerLinkActive]="'active-link'" class="cursor-pointer">
@@ -34,7 +34,7 @@ export class SubscriptionComponent implements OnInit, OnDestroy {
   private _destroy$ = new Subject();
   message: any = '';
 
-  items = [
+  items: SubscriptionData[] = [
     {url: 'bad', title: 'Bad Subscription', icon: 'close', color: 'warn'},
     {url: 'good', title: 'Good Subscription', icon: 'check', color: 'primary'},
   ]

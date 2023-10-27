@@ -14,7 +14,10 @@ import {AttributeDirectiveComponent} from "./attribute-directive.component";
         {path: 'structural', component: StructuralDirectiveComponent},
         {path: 'attribute', component: AttributeDirectiveComponent},
         {path: 'component', component: ComponentDirectiveComponent},
-      ]
+      ],
+      data: {
+        title: 'Directives'
+      }
     }])
   ],
   exports: [

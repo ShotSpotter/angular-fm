@@ -13,7 +13,10 @@ import {NoMemoryLeakSubscriptionComponent} from "./no-memory-leak-subscription.c
       children: [
         {path: 'good', component: NoMemoryLeakSubscriptionComponent},
         {path: 'bad', component: MemoryLeakSubscriptionComponent}
-      ]
+      ],
+      data: {
+        title: 'RxJS Subscriptions'
+      }
     }])
   ],
   exports: [

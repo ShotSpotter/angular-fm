@@ -5,7 +5,6 @@ import {timer} from "rxjs";
   selector: 'app-lifecycle',
   template: `
     <div class="container-fluid">
-      <h2 class="text-center my-2">Component Lifecycle</h2>
       <div class="container">
         <div class="grid-lifecycle">
           <app-on-change [person]="person"></app-on-change>

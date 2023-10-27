@@ -7,6 +7,10 @@
   box-shadow: vars.$shadow-default;
   transition: vars.$transition-default;
 
+  .mat-card-title {
+    margin-bottom: 3rem;
+  }
+
   .mat-card-content .mat-icon {
     transition: transform 280ms vars.$transition-animation, box-shadow 280ms vars.$transition-animation !important;
   }
@@ -39,6 +43,7 @@
 
   .mat-card {
     padding: 2rem;
+    box-shadow: vars.$shadow-lite;
 
     .card-icon {
       height: auto;
@@ -61,4 +66,10 @@
 
 @mixin animation-scale() {
   animation: scaleAnimation 1s linear infinite;
+}
+
+@mixin mat-icon-size($size) {
+  font-size: $size;
+  width: $size;
+  height: $size;
 }

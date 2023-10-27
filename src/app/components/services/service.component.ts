@@ -7,7 +7,6 @@ import {SharedService} from "../../common/shared.service";
   selector: 'app-service',
   template: `
     <div class="container-fluid">
-      <h2 class="text-center my-3">Dependency Injection (DI) & Services in Angular</h2>
       <div class="container">
         <div class="paragraph">
           <code>Dependency Injection</code> pattern is all about passing object to the dependent code.

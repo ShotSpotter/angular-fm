@@ -9,7 +9,10 @@ import {SafetySmartComponent} from "./components/safety-smart.component";
       path: '', component: RoutingComponent,
       children: [
         { path: '', component: SafetySmartComponent}
-      ]
+      ],
+      data: {
+        title: 'Routes'
+      }
     }])
   ],
   exports: [

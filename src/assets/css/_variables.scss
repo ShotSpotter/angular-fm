@@ -3,6 +3,7 @@
 $app-font-family: Roboto, "Helvetica Neue", sans-serif;
 $background-light-grey: rgb(255 255 255 / 45%);
 $shadow-default: 0 0 20px -5px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+$shadow-lite: 0 0 20px -5px rgb(0 0 0 / 0%), 0 1px 1px 0 rgb(255 255 255 / 8%), 0 1px 3px 0px rgb(0 0 0 / 6%) !important;
 $transition-duration: 280ms;
 $transition-animation: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-default: all $transition-duration $transition-animation;

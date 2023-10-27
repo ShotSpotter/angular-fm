@@ -4,7 +4,7 @@ import {MatRadioChange} from "@angular/material/radio";
 @Component({
   selector: 'app-attribute-directive',
   template: `
-    <app-card-component [data]="{title: 'Attribute Directive'}">
+    <app-card-component [data]="{title: 'Attribute Directive', css: 'shadow-lite'}">
       <div class="paragraph mb-3">
         Attribute directives are used to change the appearance or behavior of an element.
         <ul>

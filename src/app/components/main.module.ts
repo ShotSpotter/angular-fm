@@ -4,7 +4,7 @@ import {MainComponent} from "./main.component";
 import {MainRouteModule} from "./main.route.module";
 import {FeatureComponent} from "./feature.component";
 import {SharedModule} from "../common/shared.module";
-import {HomeComponent} from "./home.component";
+import {HomeComponent} from "./home/home.component";
 
 @NgModule({
   declarations: [

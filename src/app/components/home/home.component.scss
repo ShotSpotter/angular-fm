@@ -1,0 +1,16 @@
+@use "~src/assets/css/variables" as *;
+@use "~src/assets/css/mixins" as *;
+
+.grid-home {
+  @include grid(2, 'auto-fill');
+  align-items: stretch;
+
+  > .item {
+    flex-grow: 1;
+    box-shadow: $shadow-lite;
+  }
+}
+
+:host ::ng-deep .block {
+  height: 100%;
+}
