@@ -9,7 +9,7 @@ import {Subject} from "rxjs";
   selector: 'app-main',
   template: `
     <div class="container-fluid main-container">
-      <h2 class="text-center fs-5 my-3">{{currentTitle}}</h2>
+      <h2 class="text-center fs-5 text-muted my-3">{{currentTitle}}</h2>
       <router-outlet></router-outlet>
     </div>
   `

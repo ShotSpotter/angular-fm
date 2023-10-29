@@ -1,4 +1,4 @@
-@use "variables" as vars;
+@use "~src/assets/css/variables" as vars;
 @import "~bootstrap/dist/css/bootstrap.css";
 
 @mixin mat-card-default() {
@@ -8,19 +8,35 @@
   transition: vars.$transition-default;
 
   .mat-card-title {
+    --bs-text-opacity: 1;
+    color: vars.$color-gray-600;
     margin-bottom: 3rem;
+    transition: vars.$transition-default;
   }
 
   .mat-card-content .mat-icon {
-    transition: transform 280ms vars.$transition-animation, box-shadow 280ms vars.$transition-animation !important;
+    transition: transform 280ms vars.$transition-animation,
+    box-shadow 280ms vars.$transition-animation !important;
   }
 
-  &:hover {
+  &.hover:hover {
     .mat-card-content .mat-icon {
       @include scale-on-hover(1.2);
     }
 
-    background-color: darken(#fff, 3%);
+    background-color: vars.$mat-card-background-color-hover;
+  }
+
+  &.active-link {
+    background-color: vars.$primary !important;
+
+    .mat-card-title {
+      color: vars.$color-gray-200 !important;
+    }
+
+    mat-icon.mat-primary {
+      color: vars.$warn;
+    }
   }
 
   @media (max-width: 600px) {
@@ -28,11 +44,11 @@
   }
 }
 
-@mixin grid($col, $row, $colWidth: 1fr, $roWidth: 1fr) {
+@mixin grid($col, $row, $colWidth: 1fr, $rowWidth: 1fr) {
   width: 100%;
   display: grid;
   grid-template-columns: repeat($col, $colWidth);
-  grid-template-rows: repeat($row, $roWidth);
+  grid-template-rows: repeat($row, $rowWidth);
   grid-auto-rows: 1fr;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
@@ -49,6 +65,10 @@
       height: auto;
       width: auto;
       font-size: 5rem
+    }
+
+    .img {
+      height: calc(100vh / 4);
     }
   }
 

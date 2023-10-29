@@ -1,5 +1,10 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
+$text-color: #000;
+$background-color: #fff;
+$primary: #3629ab;
+$accent: #d63384;
+$warn: #ffc107;
 $app-font-family: Roboto, "Helvetica Neue", sans-serif;
 $background-light-grey: rgb(255 255 255 / 45%);
 $shadow-default: 0 0 20px -5px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
@@ -7,9 +12,24 @@ $shadow-lite: 0 0 20px -5px rgb(0 0 0 / 0%), 0 1px 1px 0 rgb(255 255 255 / 8%), 
 $transition-duration: 280ms;
 $transition-animation: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-default: all $transition-duration $transition-animation;
-
 $app-brand-height: 95px;
 $app-content-height: calc(100% - 95px);
+
+$color-gray: #6c757d;
+$color-gray-dark: #343a40;
+$color-gray-50: #f7f7f7;
+$color-gray-100: #ffffffbd;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #6c757d;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
+
+$mat-card-background-color: $background-color;
+$mat-card-background-color-hover: darken($background-color, 5%);
 
 @keyframes scaleAnimation {
   0% {
@@ -21,4 +41,16 @@ $app-content-height: calc(100% - 95px);
   100% {
     transform: scale(1);
   }
+}
+
+.background-color {
+  background-color: $background-color;
+}
+
+.text-primary  {
+  color: $primary !important;
+}
+
+.text-accent  {
+  color: $accent;
 }

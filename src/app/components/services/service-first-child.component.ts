@@ -6,15 +6,16 @@ import {SharedService} from "../../common/shared.service";
 @Component({
   selector: 'app-service-first-child',
   template: `
-    <div class="container-fluid">
-      <div class="container">
-        <div class="paragraph">
-          <h1><code>First Child</code></h1>
-          <p>I am first child component of my parent and I share the same component that my parent declared. I didn't declare but I will get the service injected.</p>
-          <label class="fw-bold">Messaged Received from Parent: <code>{{data}}</code></label>
-        </div>
+      <div class="container-fluid">
+          <div class="container p-0 h-100">
+              <app-card-component>
+                  <h1><code>First Child</code></h1>
+                  <p>I am first child component of my parent and I share the same <b>service</b> that my parent
+                      provided. I didn't provide but I will get the service injected.</p>
+                  <label class="fw-bold">Messaged Received from Parent: <code>{{data}}</code></label>
+              </app-card-component>
+          </div>
       </div>
-    </div>
   `,
 })
 export class ServiceFirstChildComponent implements OnInit, OnDestroy {

@@ -1,8 +1,6 @@
 export function AutoUnsubscribe(constructor: Function): void {
   const original = constructor.prototype.ngOnDestroy;
 
-  console.log(constructor, constructor.prototype)
-
   constructor.prototype.ngOnDestroy = function () {
     for (const prop in this) {
       const property = this[prop];

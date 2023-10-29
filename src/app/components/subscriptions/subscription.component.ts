@@ -7,25 +7,26 @@ import {SubscriptionData} from "./subscriptionData";
 @Component({
   selector: 'app-subscription',
   template: `
-    <div class="container-fluid">
-      <div class="container">
-        <div class="grid-subscriptions mb-5">
-          <mat-card *ngFor="let item of items" [routerLink]="item.url" [routerLinkActive]="'active-link'" class="cursor-pointer">
-            <mat-card-title class="text-center">{{item.title}}</mat-card-title>
-            <mat-card-content class="text-center">
-              <mat-icon class="card-icon" [color]="item.color">{{item.icon}}</mat-icon>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <router-outlet></router-outlet>
-        <div class="my-5 paragraph text-center" *ngIf="message">
-          <code>{{message}}</code>
-        </div>
-        <div class="text-center">
-          <a [routerLink]="'/subscriptions'">Subscriptions Home</a>
-        </div>
+      <div class="container-fluid">
+          <div class="container">
+              <div class="grid-subscriptions mb-5">
+                  <mat-card *ngFor="let item of items" [routerLink]="item.url" [routerLinkActive]="'active-link'"
+                            class="cursor-pointer">
+                      <mat-card-title class="text-center">{{item.title}}</mat-card-title>
+                      <mat-card-content class="text-center">
+                          <mat-icon class="card-icon" [color]="item.color">{{item.icon}}</mat-icon>
+                      </mat-card-content>
+                  </mat-card>
+              </div>
+              <router-outlet></router-outlet>
+              <div class="my-5 section text-center" *ngIf="message">
+                  <code>{{message}}</code>
+              </div>
+              <div class="text-center">
+                  <a [routerLink]="'/subscriptions'">Subscriptions Home</a>
+              </div>
+          </div>
       </div>
-    </div>
   `,
   providers: [SharedService]
 })

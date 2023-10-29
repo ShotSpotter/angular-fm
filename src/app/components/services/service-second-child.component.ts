@@ -6,15 +6,16 @@ import {SharedService} from "../../common/shared.service";
 @Component({
   selector: 'app-service-second-child',
   template: `
-    <div class="container-fluid">
-      <div class="container">
-        <div class="paragraph">
-          <h1><code>Second Child</code></h1>
-          <p>I am the Second child component of my parent and I do not share the same <b>service</b> that my parent declared. I declared and I will get a different service instance injected.</p>
-          <label class="fw-bold">Messaged Received from Parent: <code>{{data}}</code></label>
-        </div>
+      <div class="container-fluid">
+          <div class="container p-0 h-100">
+              <app-card-component>
+                  <h1><code>Second Child</code></h1>
+                  <p>I am the Second child component of my parent and I do not share the same <b>service</b> that my
+                      parent declared. I declared and I will get a different service instance injected.</p>
+                  <label class="fw-bold">Messaged Received from Parent: <code>{{data}}</code></label>
+              </app-card-component>
+          </div>
       </div>
-    </div>
   `,
   providers: [SharedService]
 })

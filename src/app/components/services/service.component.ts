@@ -6,71 +6,77 @@ import {SharedService} from "../../common/shared.service";
 @Component({
   selector: 'app-service',
   template: `
-    <div class="container-fluid">
-      <div class="container">
-        <div class="paragraph">
-          <code>Dependency Injection</code> pattern is all about passing object to the dependent code.
-          You don't have to deal with creating or instantiating dependent object in your class. You just have a framework or assembler create/instantiate and pass that dependency to you.
-          The real benefit of <code>DI</code> is that it provides loose coupling.
-          With loose coupling we can substitute the dependency with any other class of same type. In <b>Angular</b>, <code>DI</code> is performed through constructor.
-          In <b>Angular</b> dependency are mostly service classes but is not limited to services only. String or function can also be used for dependency.
+      <div class="container-fluid">
+          <div class="container">
+              <div class="section">
+                  <code>Dependency Injection</code> pattern is all about passing object to the dependent code.
+                  You don't have to deal with creating or instantiating dependent object in your class. You just have a
+                  framework or assembler create/instantiate and pass that dependency to you.
+                  The real benefit of <code>DI</code> is that it provides loose coupling.
+                  With loose coupling we can substitute the dependency with any other class of same type. In
+                  <b>Angular</b>, <code>DI</code> is performed through constructor.
+                  In <b>Angular</b> dependency are mostly service classes but is not limited to services only. String or
+                  function can also be used for dependency.
 
-          <div class="mt-5">
-            <h2 class="m-0">Dependency</h2>
-            <pre>
-            <code>
-               {{dependency}}
-            </code>
-            </pre>
-          </div>
-          <div class="mt-2">
-            <h2 class="m-0">Component level Dependency</h2>
-            <label>When a provider is registered at the component level, a new instance of the service is created for each new instance of the component.</label>
-            <pre>
-            <code>
-               {{dependencyConsumerComponent}}
-            </code>
-            </pre>
-          </div>
-          <div class="mt-2">
-            <h2 class="m-0">Module level Dependency</h2>
-            <label>When a provider is registered at the module level, a new instance of the service is created and the same instance is shared within all the components, directives and pipes within that module.</label>
-            <pre>
-            <code>
-               {{dependencyConsumerModule}}
-            </code>
-            </pre>
-          </div>
-          <div class="mt-2">
-            <h2 class="m-0">Root Level</h2>
-            <label>When <code>providedIn: 'root'</code>, the service is available at the root application level, accessible to all the component, directives, pipes and modules in the app.</label>
-            <pre>
-            <code>
-               {{dependencyRoot}}
-            </code>
-            </pre>
-          </div>
-          <div class="mt-2">
-            <h2 class="m-0">Dependency through function</h2>
-            <label>A dependency can also be provided through function as seen below.</label>
-            <pre>
-            <code>
-               {{dependencyFunction}}
-            </code>
-            </pre>
-          </div>
-          <div>For more check <a href="https://angular.io/guide/dependency-injection-providers">@Angular DI Doc</a></div>
-        </div>
+                  <div class="mt-5">
+                      <h2 class="m-0">Dependency</h2>
+                      <pre>
+                        <code>
+                           {{dependency}}
+                        </code>
+                      </pre>
+                  </div>
+                  <div class="mt-2">
+                      <h2 class="m-0">Component level Dependency</h2>
+                      <label>When a provider is registered at the component level, a new instance of the service is
+                          created for each new instance of the component.</label>
+                      <pre>
+                        <code>
+                           {{dependencyConsumerComponent}}
+                        </code>
+                      </pre>
+                  </div>
+                  <div class="mt-2">
+                      <h2 class="m-0">Module level Dependency</h2>
+                      <label>When a provider is registered at the module level, a new instance of the service is created
+                          and the same instance is shared within all the components, directives and pipes within that
+                          module.</label>
+                      <pre>
+                          <code>
+                             {{dependencyConsumerModule}}
+                          </code>
+                      </pre>
+                  </div>
+                  <div class="mt-2">
+                      <h2 class="m-0">Root Level</h2>
+                      <label>When <code>providedIn: 'root'</code>, the service is available at the root application
+                          level, accessible to all the component, directives, pipes and modules in the app.</label>
+                      <pre>
+                          <code>
+                             {{dependencyRoot}}
+                          </code>
+                      </pre>
+                  </div>
+                  <div class="mt-2">
+                      <h2 class="m-0">Dependency through function</h2>
+                      <label>A dependency can also be provided through function as seen below.</label>
+                      <pre>
+                          <code>
+                             {{dependencyFunction}}
+                          </code>
+                      </pre>
+                  </div>
+              </div>
 
-        <h2 class="m-0 mt-1 paragraph p-2 text-center">
-          <span class="">Message Published by Parent: <code>{{count}}</code></span>
-        </h2>
-        <div class="grid-lifecycle">
-          <app-service-first-child></app-service-first-child>
-          <app-service-second-child></app-service-second-child>
-        </div>
+              <h2 class="m-0 mt-1 section p-2 text-center">
+                  <span class="">Message Published by Parent: <code>{{count}}</code></span>
+              </h2>
+              <div class="grid-lifecycle">
+                  <app-service-first-child></app-service-first-child>
+                  <app-service-second-child></app-service-second-child>
+              </div>
+          </div>
       </div>
-    </div>
   `,
   providers: [SharedService]
 })

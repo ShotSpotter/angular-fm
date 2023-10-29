@@ -3,8 +3,7 @@
 
 .grid-route-features {
   @include grid(3, 'auto-fill');
-  margin: 2rem 0 0 0;
-}
+  margin: 2rem 0 0 0;}
 
 :host ::ng-deep .mat-card {
   padding: 1rem;

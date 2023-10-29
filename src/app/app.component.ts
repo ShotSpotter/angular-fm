@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router} from "@angular/router";
-import {filter, map} from "rxjs/operators";
-import {AppService} from "./components/app.service";
-import {environment} from "../environments/environment";
+import {ActivatedRoute, ActivatedRouteSnapshot, Router} from '@angular/router';
+import {AppService} from './components/app.service';
+import {environment} from '../environments/environment';
+import {currentRoute} from './common/utils';
 
 @Component({
   selector: 'app-root',
@@ -32,17 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd),
-        map(() => this.route.snapshot),
-        map(route => {
-          while (route.firstChild) {
-            route = route.firstChild;
-          }
-          return route;
-        })
-      )
+    currentRoute(this.router, this.route)
       .subscribe((route: ActivatedRouteSnapshot) => {
         this.appService.setCurrentTitle(route.data?.title);
       });

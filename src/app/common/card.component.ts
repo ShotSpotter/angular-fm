@@ -2,6 +2,7 @@ import {Component, DoCheck, Input} from "@angular/core";
 import {ThemePalette} from "@angular/material/core";
 
 export interface CardData {
+  id?:any;
   title?: string,
   icon?: string,
   iconColor?: ThemePalette,
@@ -10,6 +11,8 @@ export interface CardData {
   titleCss?: string | string[]
   url?: string
   urlTitle?: string
+  img?: string
+  extra?: {[key: string]: any}
 }
 
 @Component({
@@ -22,18 +25,28 @@ export interface CardData {
       </mat-card-title>
       <mat-card-content>
         <ng-content></ng-content>
-        <div class="row align-items-center justify-content-center align-self-stretch mb-3" *ngIf="data?.icon">
+        <div class="icon-img-div" *ngIf="data?.icon || data?.img">
           <mat-icon class="card-icon" [color]="data?.iconColor">{{data?.icon}}</mat-icon>
+          <img class="img" [src]="data.img" alt=""/>
         </div>
-        <div class="col-12 px-2" *ngIf="data?.content">
+        <div class="w-100 px-2" *ngIf="data?.content">
           <span class="text-muted">{{data?.content}}</span>
         </div>
-        <div class="row" *ngIf="data?.url">
+        <div class="d-flex" *ngIf="data?.url">
           <button mat-raised-button color="primary" [routerLink]="data.url">{{data.title}}</button>
         </div>
       </mat-card-content>
     </mat-card>
-  `
+  `,
+  styles: [`
+    .icon-img-div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+      margin-bottom: 1rem;
+    }
+  `]
 })
 export class CardComponent implements DoCheck {
 

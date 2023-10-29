@@ -5,20 +5,21 @@ import {MatButtonToggleChange} from "@angular/material/button-toggle";
   selector: 'app-structural-directive',
   template: `
     <app-card-component [data]="{title: 'Structural Directive', css: 'shadow-lite'}">
-      <div class="paragraph mb-3">
+      <div class="section mb-3">
         Structural directives are used to change the DOM layout by adding and removing DOM elements.
         <ul>
           <li><code>*ngFor</code> - can be used to add DOM element by iterating over the given array.</li>
           <li><code>*ngIf</code> - can be used to show/hide a DOM element based on given condition.</li>
           <li><code>*ngSwitch</code> - can be used to swap DOM element based on a scope expression.</li>
         </ul>
-        A custom structural directive can be created as well. Check <a href="https://angular.io/guide/structural-directives">Angular Doc</a>
+        A custom structural directive can be created as well. Check <a
+        href="https://angular.io/guide/structural-directives">Angular Doc</a>
       </div>
 
       <div class="grid-directives-components">
         <div class="w-100">
           <h2 class="p-2"><code>Directive: *ngFor</code></h2>
-          <mat-card *ngFor="let item of items; let index = index" class="mb-1">
+          <mat-card *ngFor="let item of items; let index = index" class="mb-1 p-2 h-auto">
             <mat-card-content class="text-center">
               <div class="d-flex justify-content-between">
                 <label>Item #: {{item}}</label>
@@ -38,7 +39,8 @@ import {MatButtonToggleChange} from "@angular/material/button-toggle";
         <div class="w-100">
           <h2 class="p-2"><code>Directive: *ngIf</code></h2>
           <div class="d-flex align-items-center justify-content-between">
-            <mat-slide-toggle [checked]="showText" (toggleChange)="toggle()" color="primary" class="mx-1">Toggle</mat-slide-toggle>
+            <mat-slide-toggle [checked]="showText" (toggleChange)="toggle()" color="primary" class="mx-1">Toggle
+            </mat-slide-toggle>
             <span class="mx-1 text-center" *ngIf="showText">Hi <mat-icon>front_hand</mat-icon></span>
             <span class="mx-1 text-center" *ngIf="!showText">Bye <mat-icon>waving_hand</mat-icon></span>
           </div>
@@ -53,9 +55,15 @@ import {MatButtonToggleChange} from "@angular/material/button-toggle";
               <mat-button-toggle value="">Default</mat-button-toggle>
             </mat-button-toggle-group>
             <ng-container [ngSwitch]="switchSelect">
-              <div *ngSwitchCase="'Red'"><mat-icon color="warn">emoji_emotions</mat-icon></div>
-              <div *ngSwitchCase="'Blue'"><mat-icon color="primary">emoji_emotions</mat-icon></div>
-              <div *ngSwitchDefault><mat-icon>emoji_emotions</mat-icon></div>
+              <div *ngSwitchCase="'Red'">
+                <mat-icon color="warn">emoji_emotions</mat-icon>
+              </div>
+              <div *ngSwitchCase="'Blue'">
+                <mat-icon color="primary">emoji_emotions</mat-icon>
+              </div>
+              <div *ngSwitchDefault>
+                <mat-icon>emoji_emotions</mat-icon>
+              </div>
             </ng-container>
           </div>
         </div>
