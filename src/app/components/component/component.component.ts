@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {timer} from "rxjs";
+import {PersonData} from '../../common/person.component';
+import {ComponentData} from './components/component-data';
 
 @Component({
   selector: 'app-lifecycle',
@@ -8,20 +10,10 @@ import {timer} from "rxjs";
           <div class="container">
 
               <section class="section background-color mb-2">
-                  <p><b class="fs-4 ls-2">Components</b> are the main building blocks for Angular applications.
-                      It contains the data and provides user interaction logics. It bridges the view and the model.
-                      Usually, components are small and has single responsibility. E.g. display user list, display user details.
-                      Basically, a component is a Typescript class that is decorated with
-                      <code>@Component</code>
-                      and metadata about the component about the component such as
-                      <code>selector</code>,
-                      <code>template/templateUrls</code>,
-                      <code>styles/styleUrls</code>,
-                      <code>providers(Dependencies)</code> etc.
-                  </p>
+                  <p [innerHTML]="componentData.content"></p>
                   <div class="text-center pt-3">
                     <pre>
-                      <div class="code-block" [innerHTML]="componentCodeBlock"></div>
+                      <div class="code-block" [innerHTML]="componentData.code"></div>
                     </pre>
                   </div>
               </section>
@@ -43,7 +35,8 @@ import {timer} from "rxjs";
 })
 export class ComponentComponent implements OnInit {
 
-  person: { name: string, age: number, message?: string } = {name: 'John Smith', age: 10, message: 'Hello World'}
+  componentData =  ComponentData;
+  person: PersonData = this.componentData.person;
 
   ngOnInit() {
     timer(1000, 1500)
@@ -53,20 +46,4 @@ export class ComponentComponent implements OnInit {
       })
   }
 
-  componentCodeBlock = `
-    @Component({
-        selector: 'app-user', <span class="code-highlight">A unique selector</span>
-        templateUrl: './user.component.html', <span class="code-highlight">(or can use inline template with template: '...')</span>
-        styleUrls: ['./user.component.scss'], <span class="code-highlight">(or can use inline styling with styles: ['...'])</span>
-        providers: [UserService] <span class="code-highlight">Declaration of dependencies the component has that <b>Angular</b> needs to inject</span>
-    })
-    export class UserComponent {
-
-      constructor(
-        private userService: UserService // <span class="code-highlight">As you declared the dependency in the component metadata, Angular takes the responsibility of injecting the service to the component's constructor</span>
-      ) {
-
-      }
-    }
-  `
 }

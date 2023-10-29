@@ -3,7 +3,7 @@ import {ComponentComponent} from './component.component';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../../common/shared.module';
-import {PersonComponent} from './person.component';
+import {PersonComponent} from '../../common/person.component';
 import {OnChangeComponent} from './components/on-change.component';
 import {OnInitComponent} from './components/on-init.component';
 import {DoCheckComponent} from './components/do-check.component';

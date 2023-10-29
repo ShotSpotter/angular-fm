@@ -1,6 +1,20 @@
 export const ServiceData: { [key: string]: any } = {
-  di: '<b><code>Dependency Injection</code></b> pattern is all about passing object to the dependent code. You don\'t have to deal with creating or instantiating dependent object in your class. You just have a framework or assembler create/instantiate and pass that dependency to you. The real benefit of <code>DI</code> is that it provides loose coupling. With loose coupling we can substitute the dependency with any other class of same type. In <b>Angular</b>, <code>DI</code> is performed through constructor. In <b>Angular</b> dependency are mostly service classes but is not limited to services only. String or function can also be used for dependency.',
-  service: 'A <b><code>Service</code></b> is basically a class that are reusable and accessible by components and directives. E.g. fetching data from server, validating user inputs or other logics that are common across components.'
+  di: `
+   <div class="mb-2">
+     <b><code>Dependency Injection</code></b> pattern is all about segregating object instantiation and object dependency.
+     Some of the benefits of DI pattern are <b>loose coupling between dependent and dependency</b>, <b>can be substituted during runtime or testing etc.</b>
+   </div>
+   <div class="mb-2">
+     In <b>Angular</b>, <code>DI</code> is performed through constructor.
+     In <b>Angular</b> dependency are mostly <b>service</b> classes but is not limited to services only.
+     String or function can also be used for dependency.
+   </div>
+   <div class="mb-5">
+    A <b><code>Service</code></b> is basically a class that are reusable and accessible by components and directives.
+    E.g. fetching data from server, validating user inputs or other logics that are common across components.
+   </div>
+  `,
+  service: ''
 }
 
 export const ServiceDataItem: {

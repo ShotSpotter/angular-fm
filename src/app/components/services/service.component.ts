@@ -10,8 +10,7 @@ import {ServiceData, ServiceDataItem} from './service-data';
       <div class="container-fluid">
           <div class="container">
               <div class="section background-color p-md-5">
-                  <p class="mb-2" [innerHTML]="serviceData.di"></p>
-                  <p class="mb-5" [innerHTML]="serviceData.service"></p>
+                  <div class="" [innerHTML]="serviceData.di"></div>
                   <div class="mt-1" *ngFor="let service of serviceDataItem">
                       <h2 class="m-0">{{service.title}}</h2>
                       <label *ngIf="service.content" [innerHTML]="service.content"></label>

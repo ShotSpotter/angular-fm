@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
-import {SubscriptionData} from "../subscriptions/subscriptionData";
+import {LinkedData} from "../../common/linked-data";
+import {DirectiveData} from './directive-data';
 
 @Component({
   selector: 'app-directive',
@@ -7,12 +8,10 @@ import {SubscriptionData} from "../subscriptions/subscriptionData";
       <div class="container-fluid">
           <div class="container">
 
-              <div class="section mb-3">
-                  Directives are classes that add additional behavior to elements in your Angular applications.
-              </div>
+              <div class="section mb-3" [innerHTML]="directiveData.content"></div>
 
               <div class="grid-directives mb-5">
-                  <mat-card *ngFor="let item of items" [routerLink]="item.url" [routerLinkActive]="'active-link'"
+                  <mat-card *ngFor="let item of directiveData.items" [routerLink]="item.url" [routerLinkActive]="'active-link'"
                             class="cursor-pointer shadow-lite">
                       <mat-card-title class="text-center">{{item.title}}</mat-card-title>
                       <mat-card-content class="text-center">
@@ -27,10 +26,6 @@ import {SubscriptionData} from "../subscriptions/subscriptionData";
 })
 export class DirectiveComponent {
 
-  items: SubscriptionData[] = [
-    {url: 'structural', title: 'Structural Directive', icon: 'account_tree', color: 'primary'},
-    {url: 'attribute', title: 'Attribute Directive', icon: 'edit_attributes', color: 'primary'},
-    {url: 'component', title: 'Component Directive', icon: 'grid_view', color: 'primary'},
-  ]
+  directiveData = DirectiveData;
 
 }
