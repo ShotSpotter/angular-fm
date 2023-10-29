@@ -1,80 +1,37 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
-import {Subject, timer} from "rxjs";
-import {takeUntil} from "rxjs/operators";
-import {SharedService} from "../../common/shared.service";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject, timer} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {SharedService} from '../../common/shared.service';
+import {ServiceData, ServiceDataItem} from './service-data';
 
 @Component({
   selector: 'app-service',
   template: `
       <div class="container-fluid">
           <div class="container">
-              <div class="section">
-                  <code>Dependency Injection</code> pattern is all about passing object to the dependent code.
-                  You don't have to deal with creating or instantiating dependent object in your class. You just have a
-                  framework or assembler create/instantiate and pass that dependency to you.
-                  The real benefit of <code>DI</code> is that it provides loose coupling.
-                  With loose coupling we can substitute the dependency with any other class of same type. In
-                  <b>Angular</b>, <code>DI</code> is performed through constructor.
-                  In <b>Angular</b> dependency are mostly service classes but is not limited to services only. String or
-                  function can also be used for dependency.
-
-                  <div class="mt-5">
-                      <h2 class="m-0">Dependency</h2>
-                      <pre>
-                        <code>
-                           {{dependency}}
-                        </code>
-                      </pre>
-                  </div>
-                  <div class="mt-2">
-                      <h2 class="m-0">Component level Dependency</h2>
-                      <label>When a provider is registered at the component level, a new instance of the service is
-                          created for each new instance of the component.</label>
-                      <pre>
-                        <code>
-                           {{dependencyConsumerComponent}}
-                        </code>
-                      </pre>
-                  </div>
-                  <div class="mt-2">
-                      <h2 class="m-0">Module level Dependency</h2>
-                      <label>When a provider is registered at the module level, a new instance of the service is created
-                          and the same instance is shared within all the components, directives and pipes within that
-                          module.</label>
-                      <pre>
-                          <code>
-                             {{dependencyConsumerModule}}
-                          </code>
-                      </pre>
-                  </div>
-                  <div class="mt-2">
-                      <h2 class="m-0">Root Level</h2>
-                      <label>When <code>providedIn: 'root'</code>, the service is available at the root application
-                          level, accessible to all the component, directives, pipes and modules in the app.</label>
-                      <pre>
-                          <code>
-                             {{dependencyRoot}}
-                          </code>
-                      </pre>
-                  </div>
-                  <div class="mt-2">
-                      <h2 class="m-0">Dependency through function</h2>
-                      <label>A dependency can also be provided through function as seen below.</label>
-                      <pre>
-                          <code>
-                             {{dependencyFunction}}
-                          </code>
+              <div class="section background-color p-md-5">
+                  <p class="mb-2" [innerHTML]="serviceData.di"></p>
+                  <p class="mb-5" [innerHTML]="serviceData.service"></p>
+                  <div class="mt-1" *ngFor="let service of serviceDataItem">
+                      <h2 class="m-0">{{service.title}}</h2>
+                      <label *ngIf="service.content" [innerHTML]="service.content"></label>
+                      <pre *ngIf="service.code">
+                        <div class="code-block">
+                           {{service.code}}
+                        </div>
                       </pre>
                   </div>
               </div>
 
-              <h2 class="m-0 mt-1 section p-2 text-center">
-                  <span class="">Message Published by Parent: <code>{{count}}</code></span>
-              </h2>
-              <div class="grid-lifecycle">
-                  <app-service-first-child></app-service-first-child>
-                  <app-service-second-child></app-service-second-child>
-              </div>
+              <app-card-component [data]="{css: 'shadow-lite section'}">
+                  <h2 class="text-muted my-2 text-center" title>
+                      <span class="">Message Published by Parent: <code>{{count}}</code></span>
+                  </h2>
+                  <div class="grid-lifecycle">
+                      <app-service-first-child></app-service-first-child>
+                      <app-service-second-child></app-service-second-child>
+                  </div>
+              </app-card-component>
           </div>
       </div>
   `,
@@ -84,9 +41,11 @@ export class ServiceComponent implements OnInit, OnDestroy {
 
   count!: number;
   private _destroy$ = new Subject();
+  serviceData = ServiceData;
+  serviceDataItem = ServiceDataItem;
 
   constructor(
-    private SharedService: SharedService
+    private sharedService: SharedService
   ) {
   }
 
@@ -95,55 +54,11 @@ export class ServiceComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._destroy$))
       .subscribe(count => {
         this.count = count;
-        this.SharedService.post(`${count}`);
+        this.sharedService.post(`${count}`);
       })
   }
 
   ngOnDestroy() {
     this._destroy$?.unsubscribe();
   }
-
-  dependency = `
-      @Injectable()
-      class MyService {}
-  `
-  dependencyRoot = `
-      @Injectable({
-        providedIn: 'root'
-      })
-      class MyService {}
-  `
-  dependencyFunction = `
-      export function myServiceFactory(arg) {
-        return () => arg.get();
-      }
-
-      @NgModule({
-        providers: [
-          AnotherService,
-          {
-            provider: myServiceFactory, // dependency token
-            useFactory: myServiceFactory,
-            deps: [AnotherService]
-          }
-        ],
-        ...
-      })
-  `
-  dependencyConsumerComponent = `
-    @Component({
-      selector: 'app-my-component',
-      template: '...',
-      providers: [MyService]
-    })
-    class MyComponent {}
-  `
-  dependencyConsumerModule = `
-    @NgModule({
-      declarations: [MyComponent]
-      providers: [MyService]
-    })
-    class MyModule {}
-  `
-
 }

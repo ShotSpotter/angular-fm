@@ -182,7 +182,7 @@ body {
   font-family: vars.$app-font-family;
   font-size: 1rem;
   background-color: lighten(#eef5f8, .5%);
-  padding: 5rem;
+  padding: 2rem;
   color: vars.$color-gray-600 !important;
 
   @media (max-width: 600px) {
@@ -216,6 +216,22 @@ code {
 .code-highlight {
   color: vars.$primary;
   font-weight: 600;
+}
+
+ul.content-list-simple {
+  list-style: none;
+  padding: .25rem;
+  margin: .25rem 0;
+
+  > li {
+    margin: .25rem 0;
+    padding: .25rem;
+
+    > span {
+      margin-right: .5rem;
+      font-weight: 600;
+    }
+  }
 }
 
 .active-link {

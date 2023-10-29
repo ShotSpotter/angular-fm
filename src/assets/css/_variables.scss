@@ -2,13 +2,13 @@
 
 $text-color: #000;
 $background-color: #fff;
-$primary: #3629ab;
+$primary: #3f51b5;
 $accent: #d63384;
 $warn: #ffc107;
 $app-font-family: Roboto, "Helvetica Neue", sans-serif;
 $background-light-grey: rgb(255 255 255 / 45%);
-$shadow-default: 0 0 20px -5px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
-$shadow-lite: 0 0 20px -5px rgb(0 0 0 / 0%), 0 1px 1px 0 rgb(255 255 255 / 8%), 0 1px 3px 0px rgb(0 0 0 / 6%) !important;
+$shadow-default: 0 0 20px -5px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0px rgba(0, 0, 0, 0.12);
+$shadow-lite: 0 0 20px -5px rgb(0 0 0 / 0%), 0 1px 1px 0 rgb(255 255 255 / 8%), 0 1px 3px 0px rgb(0 0 0 / 6%);
 $transition-duration: 280ms;
 $transition-animation: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-default: all $transition-duration $transition-animation;
@@ -44,7 +44,7 @@ $mat-card-background-color-hover: darken($background-color, 5%);
 }
 
 .background-color {
-  background-color: $background-color;
+  background-color: $background-color !important;
 }
 
 .text-primary  {
@@ -52,5 +52,5 @@ $mat-card-background-color-hover: darken($background-color, 5%);
 }
 
 .text-accent  {
-  color: $accent;
+  color: $accent !important;
 }

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FeatureData} from './feature-data';
 
 @Component({
   selector: 'app-feature',
@@ -20,12 +21,6 @@ import {Component} from '@angular/core';
 })
 export class FeatureComponent {
 
-  items = [
-    {url: '/lifecycle', title: 'Component Lifecycle', icon: 'recycling'},
-    {url: '/services', title: 'DI & Services', icon: 'lan'},
-    {url: '/directives', title: 'Directives', icon: 'settings_applications'},
-    {url: '/routing', title: 'Routing', icon: 'route'},
-    {url: '/subscriptions', title: 'RxJS Subscriptions', icon: 'card_membership'}
-  ]
+  items = FeatureData;
 
 }

@@ -3,16 +3,16 @@ import {Component, Input} from "@angular/core";
 @Component({
   selector: 'app-person',
   template: `
-      <app-card-component class="col-12">
+      <app-card-component class="w-100">
           <ng-content select="[title]"></ng-content>
           <div class="section">
               <ng-content select="[content]"></ng-content>
           </div>
-          <div class="my-2 p-2">
-              <p class="code"><span class="mx-1 my-1 mat-tab-label">Name:</span> <code>{{name}}</code></p>
-              <p class="code"><span class="mx-1 my-1 mat-tab-label">Age:</span> <code>{{age}}</code></p>
-              <p class="code"><span class="mx-1 mat-tab-label">Message:</span> <code>{{message}}</code></p>
-          </div>
+          <ul class="content-list-simple">
+              <li><span>Name:</span> <code>{{name}}</code></li>
+              <li><span>Age:</span> <code>{{age}}</code></li>
+              <li><span >Message:</span> <code>{{message}}</code></li>
+          </ul>
       </app-card-component>
   `
 })
