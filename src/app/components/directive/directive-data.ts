@@ -1,5 +1,3 @@
-import {LinkedData} from '../../common/linked-data';
-
 export const DirectiveData: { [key: string]: any } = {
   content: '<b><code>Directives</code></b> are classes that add additional behavior to DOM elements in your Angular applications. For example: add/remove new DOM elements, change color of an element, show/hide elements etc. ' +
     'There are 3 different types of directives, <code>Structural</code>, <code>Attribute</code> & <code>Component</code>.',

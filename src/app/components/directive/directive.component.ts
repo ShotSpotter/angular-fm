@@ -1,5 +1,4 @@
-import {Component} from "@angular/core";
-import {LinkedData} from "../../common/linked-data";
+import {Component} from '@angular/core';
 import {DirectiveData} from './directive-data';
 
 @Component({
