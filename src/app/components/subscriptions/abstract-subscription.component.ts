@@ -19,7 +19,6 @@ export abstract class AbstractSubscriptionComponent implements OnInit, OnDestroy
 
   ngOnDestroy(): void {
     this._destroy$.next();
-    this._destroy$.complete();
     this._destroy$.unsubscribe();
     console.log('Destroyed subscription: ', this._destroy$.closed)
   }

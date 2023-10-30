@@ -9,7 +9,60 @@ export const SubscriptionData: {
      and emits data. Any subscriptions to the Observables should be managed if they emit data over time.
   `,
   items: [
-    {url: 'bad', title: 'Bad Subscription', icon: 'thumb_down', color: 'warn'},
-    {url: 'good', title: 'Good Subscription', icon: 'thumb_up', color: 'primary'}
+    {
+      url: 'bad',
+      title: 'Bad Subscription',
+      icon: 'thumb_down',
+      color: 'warn',
+      code: `
+        @Component({
+          selector: 'app-memory-leak-subscription',
+          template: '...'
+        })
+        export class MemoryLeakSubscriptionComponent {
+
+          constructor(
+            protected someService: SomeService
+          ) {
+          }
+
+          ngOnInit() {
+            this.someService.getData().subscribe();
+          }
+        }
+      `
+    },
+    {
+      url: 'good',
+      title: 'Good Subscription',
+      icon: 'thumb_up',
+      color: 'primary',
+      code: `
+        @Component({
+          selector: 'app-no-memory-leak-subscription',
+          template: '...'
+        })
+        export class NoMemoryLeakSubscriptionComponent {
+
+          protected _destroy$ = new Subject();
+
+          constructor(
+            protected someService: SomeService
+          ) {
+          }
+
+          ngOnInit() {
+            this.someService.getData()
+              .pipe(takeUntil(this._destroy$))
+              .subscribe();
+          }
+
+          ngOnDestroy() {
+            this._destroy$.next();
+            this._destroy$.unsubscribe();
+          }
+        }
+      `
+    }
   ]
 }

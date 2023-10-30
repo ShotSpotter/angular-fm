@@ -3,7 +3,7 @@ import {takeUntil} from "rxjs/operators";
 import {AbstractSubscriptionComponent} from "./abstract-subscription.component";
 
 @Component({
-  selector: 'app-memory-leak-subscription',
+  selector: 'app-no-memory-leak-subscription',
   template: `
     <div class="w-100">
       <h2 class="text-center">NoMemoryLeakSubscriptionComponent</h2>
