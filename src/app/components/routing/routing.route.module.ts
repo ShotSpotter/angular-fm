@@ -7,12 +7,11 @@ import {RoutingHomeComponent} from './routing-home.component';
   imports: [
     RouterModule.forChild([{
       path: '', component: RoutingComponent,
+      data: {title: 'Routes'},
       children: [
-        {path: '', component: RoutingHomeComponent}
-      ],
-      data: {
-        title: 'Routes'
-      }
+        {path: '', component: RoutingHomeComponent},
+        {path: 'users', loadChildren: () => import('./user/user-list.module').then(m => m.UserListModule)}
+      ]
     }])
   ],
   exports: [

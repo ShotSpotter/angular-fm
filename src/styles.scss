@@ -81,7 +81,7 @@ body {
   &.main-container, &.app-container {
     height: auto;
     padding: 0 !important;
-    background-color: #deeaff4f;
+    background-color: vars.$primary-lite-x;
   }
 
   @media (max-width: 600px) {

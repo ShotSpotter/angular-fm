@@ -15,3 +15,15 @@ export function currentRoute(router: Router, route: ActivatedRoute): Observable<
       })
     )
 }
+
+export function flatten<T>(arr: T[]) {
+  return arr.reduce((acc: T[], item: T) => {
+    if (Array.isArray(item)) {
+      acc = acc.concat(flatten(item));
+    } else {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+}
+
