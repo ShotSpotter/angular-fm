@@ -1,0 +1,21 @@
+@use "~src/assets/css/variables" as *;
+@use "~src/assets/css/mixins" as *;
+
+.grid-component-features {
+  @include grid(2, 'auto-fill');
+  margin: 2rem 0 0 0;
+}
+
+.grid-component-communication {
+  @include grid(3, 'auto-fill');
+  margin: 2rem 0 0 0;
+}
+
+:host ::ng-deep .mat-card {
+  padding: 1rem;
+  box-shadow: $shadow-lite;
+
+  .mat-icon {
+    @include mat-icon-size(2rem);
+  }
+}

@@ -3,19 +3,15 @@ import {ComponentComponent} from './component.component';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../../common/shared.module';
-import {PersonComponent} from '../../common/person.component';
-import {OnChangeComponent} from './components/on-change.component';
-import {OnInitComponent} from './components/on-init.component';
-import {DoCheckComponent} from './components/do-check.component';
-import {AfterContentInitComponent} from './components/after-content-init.component';
-import {AfterContentCheckedComponent} from './components/after-content-checked.component';
-import {AfterViewInitComponent} from './components/after-view-init.component';
-import {AfterViewCheckedComponent} from './components/after-view-checked.component';
 
 // Route Module
 @NgModule({
   imports: [
-    RouterModule.forChild([{path: '', component: ComponentComponent, data: {title: 'Components'}}])
+    RouterModule.forChild([
+      {path: '', component: ComponentComponent, data: {title: 'Components'}},
+      {path: 'lifecycle', loadChildren: () => import('./lifecycle/component-lifecycle.module').then(m => m.ComponentLifecycleModule)},
+      {path: 'communication', loadChildren: () => import('./communication/component-communication.module').then(m => m.ComponentCommunicationModule)}
+    ])
   ],
   exports: [
     RouterModule
@@ -27,16 +23,7 @@ export class ComponentRouteModule {
 // Module
 @NgModule({
   declarations: [
-    ComponentComponent,
-    OnChangeComponent,
-    OnInitComponent,
-    DoCheckComponent,
-    AfterContentInitComponent,
-    AfterContentCheckedComponent,
-    AfterViewInitComponent,
-    AfterViewCheckedComponent,
-    PersonComponent,
-    AfterViewCheckedComponent
+    ComponentComponent
   ],
   imports: [
     CommonModule,

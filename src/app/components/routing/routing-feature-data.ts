@@ -2,7 +2,7 @@ import {CardData} from '../../common/card.component';
 
 export const ROUTING_FEATURE_DATA: CardData[] = [
   {
-    'icon': 'compare_arrows',
+    'icon': 'alt_route',
     'content': 'Provides seamless routing between components/views',
     'iconColor': 'primary',
     'css': 'hover'

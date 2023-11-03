@@ -1,3 +1,5 @@
+import {LinkedData} from '../../common/linked-data';
+
 export const ComponentData: { [key: string]: any } = {
   content: '<b><code>Components</code></b> are the main building blocks for Angular applications. ' +
     'It contains the data and provides user interaction logics. ' +
@@ -29,8 +31,10 @@ export const ComponentData: { [key: string]: any } = {
         ...
       }
     }
-  `,
-  person: {
-    name: 'John Smith', age: 10, message: 'Hello World'
-  }
+  `
 }
+
+export const ComponentFeatures: LinkedData[] = [
+  {url: 'lifecycle', title: 'Lifecycle', icon: 'recycling'},
+  {url: 'communication', title: 'Communication', icon: 'phone'}
+]

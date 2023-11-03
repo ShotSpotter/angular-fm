@@ -41,7 +41,7 @@ import {takeUntil} from "rxjs/operators";
                 </div>
               </mat-tree-node>
             </mat-tree>
-            <div class="row m-0 mt-3">
+            <div class="row m-0 my-3">
               <button mat-raised-button color="primary" (click)="login()" *ngIf="!authenticated">Log In</button>
             </div>
           </div>

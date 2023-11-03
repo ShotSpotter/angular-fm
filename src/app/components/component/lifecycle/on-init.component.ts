@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {AbstractLifecycleComponent} from "../abstract-lifecycle.component";
+import {AbstractLifecycleComponent} from "./abstract-lifecycle.component";
 
 @Component({
   selector: 'app-on-init',

@@ -24,17 +24,17 @@ export interface CardData {
         <ng-content select="title"></ng-content>
       </mat-card-title>
       <mat-card-content>
-        <ng-content></ng-content>
         <div class="icon-img-div" *ngIf="data?.icon || data?.img">
           <mat-icon class="card-icon" [color]="data?.iconColor">{{data?.icon}}</mat-icon>
           <img class="img" [src]="data.img" alt=""/>
         </div>
-        <div class="w-100 px-2" *ngIf="data?.content">
+        <div class="w-100 px-2 text-center" *ngIf="data?.content">
           <span class="text-muted">{{data?.content}}</span>
         </div>
         <div class="d-flex" *ngIf="data?.url">
           <button mat-raised-button color="primary" [routerLink]="data.url">{{data.title}}</button>
         </div>
+        <ng-content></ng-content>
       </mat-card-content>
     </mat-card>
   `,

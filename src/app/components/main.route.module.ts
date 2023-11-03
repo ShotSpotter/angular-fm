@@ -12,7 +12,7 @@ import {HomeComponent} from "./home/home.component";
         path: 'main', component: MainComponent, children: [
           {path: '', component: HomeComponent, data: {title: 'Angular'}},
           {path: 'features', component: FeatureComponent, data: {title: 'Features'}},
-          {path: 'lifecycle', loadChildren: () => import('./component/component.module').then(m => m.ComponentModule)},
+          {path: 'components', loadChildren: () => import('./component/component.module').then(m => m.ComponentModule)},
           {path: 'services', loadChildren: () => import('./services/service-component.module').then(m => m.ServiceComponentModule)},
           {path: 'subscriptions', loadChildren: () => import('./subscriptions/subscriptions.module').then(m => m.SubscriptionsModule)},
           {path: 'directives', loadChildren: () => import('./directive/directive.module').then(m => m.DirectiveModule)},

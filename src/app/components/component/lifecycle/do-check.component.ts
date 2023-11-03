@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, DoCheck, KeyValueDiffers} from "@angular/core";
-import {AbstractLifecycleComponent} from "../abstract-lifecycle.component";
+import {AbstractLifecycleComponent} from "./abstract-lifecycle.component";
 
 @Component({
   selector: 'app-do-check',
