@@ -9,38 +9,42 @@ import {ActivatedRoute, Router} from '@angular/router';
       <div class="container-fluid">
           <div class="container">
               <section class="section background-color mb-2">
-                  <p [innerHTML]="data.content"></p>
+                  <p [innerHTML]="data.content" class="m-0"></p>
               </section>
 
               <div class="grid-component-communication">
                   <ng-container *ngFor="let technique of communicationTechniques">
-                      <app-card-component [data]="technique">
+                      <app-card-component (click)="goto(technique)" class="cursor-pointer">
                           <ng-container>
-
-                          </ng-container>
-
-                          <ng-container *ngIf="technique.url == 'params'">
-                              <div class="row mt-5">
-                                  <mat-form-field class="col-12 col-md-4">
-                                      <mat-label>Path Parameter</mat-label>
-                                      <input type="text" matInput placeholder="" [(ngModel)]="path" name="path">
-                                  </mat-form-field>
-                                  <mat-form-field class="col-12 col-md-4">
-                                      <mat-label>Query Parameter</mat-label>
-                                      <input type="text" matInput placeholder="" [(ngModel)]="query" name="query">
-                                  </mat-form-field>
-                              </div>
-                              <div class="row justify-content-center">
-                                  <button mat-flat-button (click)="goto(technique)" class="p-2 w-auto flex-md-grow-0" color="primary">
-                                      Update
-                                  </button>
+                              <div class="row flex-wrap align-items-center h-100">
+                                  <div class="icon-img-div w-100 text-center align-self-end">
+                                      <mat-icon class="card-icon" color="accent">{{technique?.icon}}</mat-icon>
+                                  </div>
+                                  <div class="w-100 px-2 text-center align-self-start">
+                                      <h5 class="text-primary">{{technique?.content}}</h5>
+                                  </div>
                               </div>
                           </ng-container>
                       </app-card-component>
                   </ng-container>
               </div>
 
-              <div class="w-100 mt-1">
+              <div class="w-100 mt-3">
+                  <div *ngIf="technique?.url == 'params'" class="w-100 mb-3 section background-color">
+                      <div class="d-flex mt-5 gap-md-5">
+                          <mat-form-field class="col-12 col-md-4">
+                              <mat-label>Path Parameter</mat-label>
+                              <input type="text" matInput placeholder="" [(ngModel)]="path" name="path">
+                          </mat-form-field>
+                          <mat-form-field class="col-12 col-md-4">
+                              <mat-label>Query Parameter</mat-label>
+                              <input type="text" matInput placeholder="" [(ngModel)]="query" name="query">
+                          </mat-form-field>
+                          <button mat-flat-button (click)="navigateToParams(path, query)" class="flex-md-grow-0 action-button" color="primary">
+                              Update Params
+                          </button>
+                      </div>
+                  </div>
                   <router-outlet></router-outlet>
               </div>
           </div>
@@ -53,6 +57,7 @@ export class ComponentCommunicationComponent {
   readonly data = ComponentCommunicationData;
   readonly communicationTechniques = ComponentCommunicationTechniques;
 
+  technique?: CardData;
   query: string = 'Hello-Query';
   path: string = 'Hello-Path';
 
@@ -60,9 +65,15 @@ export class ComponentCommunicationComponent {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    const matches = this.communicationTechniques
+      .filter(t => this.router.url.includes(t.url || ''));
+    if (matches && matches.length > 0) {
+      this.technique = matches[0];
+    }
   }
 
   goto(technique: CardData) {
+    this.technique = technique;
     if (technique.url == 'params') {
       this.navigateToParams(this.path, this.query);
     } else {

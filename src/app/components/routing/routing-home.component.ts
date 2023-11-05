@@ -6,31 +6,31 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-routing-home',
   template: `
-    <div class="container-fluid">
-      <div class="container">
-        <div class="section">
-          Angular comes with best in market routing features which allows users to navigate between different
-          views/pages without having to load a page from the server.
-          Angular routing dynamically updates the content in the browser by loading the necessary components
-          based on the given route.
+      <div class="container-fluid">
+          <div class="container">
+              <div class="section">
+                  Angular comes with best in market routing features which allows users to navigate between different
+                  views/pages without having to load a page from the server.
+                  Angular routing dynamically updates the content in the browser by loading the necessary components
+                  based on the given route.
 
-          <div class="grid-route-features">
-            <app-card-component *ngFor="let feature of features" [data]="feature"></app-card-component>
-          </div>
-        </div>
-        <div class="mb-3">
+                  <div class="grid-route-features">
+                      <app-card-component *ngFor="let feature of features" [data]="feature"></app-card-component>
+                  </div>
+              </div>
+              <div class="mb-3">
                   <pre>
                       <div class="code-block" [innerHTML]="routerModule"></div>
                   </pre>
-        </div>
-        <div class="text-center">
-          <button mat-flat-button class="p-2" routerLink="platforms" color="primary" (click)="next()">
-            <mat-icon>start</mat-icon>
-            <span>Continue</span>
-          </button>
-        </div>
+              </div>
+              <div class="text-center">
+                  <button mat-flat-button class="p-2" routerLink="platforms" color="primary" (click)="next()">
+                      <mat-icon>start</mat-icon>
+                      <span>Continue</span>
+                  </button>
+              </div>
+          </div>
       </div>
-    </div>
   `,
   styleUrls: ['routing-home.component.scss']
 })
@@ -49,6 +49,8 @@ export class RoutingHomeComponent {
   }
 
   routerModule = `
+    <b class="fs-5"><code>Sample Routing Configuration</code></b>
+
     import { RouterModule } from '@angular/router';
 
     @NgModule({
@@ -61,5 +63,10 @@ export class RoutingHomeComponent {
       ],
     })
     export class RouteModule {}
+
+
+
+    <b class="fs-5"><code>Provides Routing Outlet in Template</code></b>
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
   `
 }

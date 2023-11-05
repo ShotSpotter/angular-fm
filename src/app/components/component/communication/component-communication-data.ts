@@ -3,7 +3,7 @@ import {CardData} from '../../../common/card.component';
 export const ComponentCommunicationData: {
   [key: string]: any
 } = {
-  content: 'There are several ways communicating between between components.'
+  content: 'Following are the techniques for communicating between components.'
 }
 
 export const ComponentCommunicationTechniques: CardData[] = [

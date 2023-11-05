@@ -18,7 +18,7 @@ export interface CardData {
 @Component({
   selector: 'app-card-component',
   template: `
-    <mat-card class="col-12 m-2" [class]="data?.css">
+    <mat-card class="col-12 m-2" [class]="data?.css || ''">
       <mat-card-title [class]="data?.titleCss" class="text-center" *ngIf="data.title">
         {{data?.title}}
         <ng-content select="title"></ng-content>

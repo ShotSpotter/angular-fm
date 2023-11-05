@@ -19,3 +19,16 @@
     @include mat-icon-size(2rem);
   }
 }
+
+.grid-component-communication-bindings {
+  @include grid(2, 'auto-fill');
+  margin: 2rem 0 0 0;
+}
+
+:host ::ng-deep .grid-component-communication .mat-card-content {
+  height: 100% !important;
+}
+
+.action-button {
+  height: 2.5rem;
+}
