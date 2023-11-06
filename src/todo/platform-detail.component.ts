@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {CardData} from '../app/common/card.component';
+import {CardData} from '../app/common/components/card.component';
 import {ROUTING_FEATURE_DATA} from '../app/components/routing/routing-feature-data';
 import {ROUTING_PLATFORM_DETAILS} from './platorm-data';
 

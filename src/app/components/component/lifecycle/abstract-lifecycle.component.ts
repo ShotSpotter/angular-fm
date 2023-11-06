@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, Input} from "@angular/core";
-import {PersonData} from '../../../common/person.component';
+import {PersonData} from '../../../common/components/person.component';
 
 @Component({
   template: ''

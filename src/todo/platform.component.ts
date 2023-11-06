@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CardData} from '../app/common/card.component';
+import {CardData} from '../app/common/components/card.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map, takeUntil} from 'rxjs/operators';
-import {AutoUnsubscribe} from '../app/common/auto-unsubscribe';
+import {AutoUnsubscribe} from '../app/common/components/auto-unsubscribe';
 import {Subject} from 'rxjs';
 import {currentRoute} from '../app/common/utils';
 import {ROUTING_PLATFORM_LIST} from './platorm-data';

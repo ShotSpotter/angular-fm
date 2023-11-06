@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject, timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {SharedService} from '../../common/shared.service';
+import {SharedService} from '../../common/services/shared.service';
 import {ServiceData, ServiceDataItem} from './service-data';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AutoUnsubscribeComponent} from '../../../../common/auto-unsubscribe.component';
+import {AutoUnsubscribeComponent} from '../../../../common/components/auto-unsubscribe.component';
 import {takeUntil} from 'rxjs/operators';
 import {combineLatest} from 'rxjs';
 
@@ -9,6 +9,7 @@ import {combineLatest} from 'rxjs';
   template: `
       <div class="container-fluid background-color">
           <div class="container">
+              <h4 class="text-muted mb-3 px-3">Component</h4>
               <app-card-component class="gap-1" [data]="{css: 'shadow-none'}">
                   <div class="d-flex flex-wrap">
                       <div class="col-md-6"><b title class="fs-5 text-accent">Path Parameters:</b><span class="ms-2 fs-6 text-muted">{{path}}</span></div>

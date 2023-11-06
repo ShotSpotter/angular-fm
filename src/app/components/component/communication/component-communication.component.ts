@@ -1,7 +1,11 @@
 import {Component} from '@angular/core';
 import {ComponentCommunicationData, ComponentCommunicationTechniques} from './component-communication-data';
-import {CardData} from '../../../common/card.component';
+import {CardData} from '../../../common/components/card.component';
 import {ActivatedRoute, Router} from '@angular/router';
+import {LoanService} from '../../../common/services/loan.service';
+import {AutoUnsubscribeComponent} from '../../../common/components/auto-unsubscribe.component';
+import {takeUntil} from 'rxjs/operators';
+import {LoanResult} from '../../../common/models/loan';
 
 @Component({
   selector: 'app-component-communication',
@@ -31,7 +35,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
               <div class="w-100 mt-3">
                   <div *ngIf="technique?.url == 'params'" class="w-100 mb-3 section background-color">
-                      <div class="d-flex mt-5 gap-md-5">
+                      <div class="d-flex mt-5 gap-md-5 flex-wrap flex-md-nowrap">
                           <mat-form-field class="col-12 col-md-4">
                               <mat-label>Path Parameter</mat-label>
                               <input type="text" matInput placeholder="" [(ngModel)]="path" name="path">
@@ -45,14 +49,19 @@ import {ActivatedRoute, Router} from '@angular/router';
                           </button>
                       </div>
                   </div>
+                  <div *ngIf="technique?.url == 'services'" class="w-100 mb-3 section background-color">
+                      <h6 class="text-muted">Total Amount You'll Pay: <span class="text-muted">{{loan?.totalAmount}}</span></h6>
+                      <h6 class="text-muted">Total Interest Alone You Will Pay: <span class="text-muted">{{loan?.totalInterest}}</span></h6>
+                  </div>
                   <router-outlet></router-outlet>
               </div>
           </div>
       </div>
   `,
-  styleUrls: ['../component.component.scss']
+  styleUrls: ['../component.component.scss'],
+  providers: [LoanService]
 })
-export class ComponentCommunicationComponent {
+export class ComponentCommunicationComponent extends AutoUnsubscribeComponent {
 
   readonly data = ComponentCommunicationData;
   readonly communicationTechniques = ComponentCommunicationTechniques;
@@ -60,16 +69,27 @@ export class ComponentCommunicationComponent {
   technique?: CardData;
   query: string = 'Hello-Query';
   path: string = 'Hello-Path';
+  loan: LoanResult | undefined | null;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private componentCommunicationService: LoanService
   ) {
+    super();
     const matches = this.communicationTechniques
       .filter(t => this.router.url.includes(t.url || ''));
     if (matches && matches.length > 0) {
       this.technique = matches[0];
     }
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+
+    this.componentCommunicationService.onLoanRequest()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe(loan => this.loan = loan);
   }
 
   goto(technique: CardData) {

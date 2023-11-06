@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AppService} from "./app.service";
-import {AutoUnsubscribe} from "../common/auto-unsubscribe";
+import {AutoUnsubscribe} from "../common/components/auto-unsubscribe";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
 

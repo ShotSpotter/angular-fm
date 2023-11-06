@@ -10,7 +10,7 @@ import {AfterContentInitComponent} from './after-content-init.component';
 import {AfterContentCheckedComponent} from './after-content-checked.component';
 import {AfterViewInitComponent} from './after-view-init.component';
 import {AfterViewCheckedComponent} from './after-view-checked.component';
-import {PersonComponent} from '../../../common/person.component';
+import {PersonComponent} from '../../../common/components/person.component';
 
 // Route Module
 @NgModule({

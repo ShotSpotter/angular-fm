@@ -6,7 +6,7 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
       <div class="container-fluid background-color">
           <h5 class="text-accent">Child Component</h5>
           <div class="d-flex flex-wrap">
-              Number received from Parent: {{number}}
+            <h6>Message from Parent (@Input): <span class="text-accent">{{number}}</span></h6>
           </div>
       </div>
   `,

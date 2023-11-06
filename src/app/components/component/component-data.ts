@@ -1,4 +1,4 @@
-import {LinkedData} from '../../common/linked-data';
+import {LinkedData} from '../../common/models/linked-data';
 
 export const ComponentData: { [key: string]: any } = {
   content: '<b><code>Components</code></b> are the main building blocks for Angular applications. ' +

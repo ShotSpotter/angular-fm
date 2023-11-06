@@ -1,4 +1,4 @@
-import {CardData} from '../app/common/card.component';
+import {CardData} from '../app/common/components/card.component';
 
 export const ROUTING_PLATFORM_LIST: CardData[] = [
   {

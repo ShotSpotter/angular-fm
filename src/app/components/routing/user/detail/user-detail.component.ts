@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AutoUnsubscribe} from "../../../../common/auto-unsubscribe";
+import {AutoUnsubscribe} from "../../../../common/components/auto-unsubscribe";
 import {Subject} from "rxjs";
 import {map, takeUntil} from "rxjs/operators";
-import {getById, USER_LIST, UserNode} from "../user-data";
+import {getById, USER_LIST, UserNode} from "../../../../common/models/user-data";
 
 @AutoUnsubscribe
 @Component({

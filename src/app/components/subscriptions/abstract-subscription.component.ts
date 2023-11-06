@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
 import {Subject} from "rxjs";
 import {AppService} from "../app.service";
-import {SharedService} from "../../common/shared.service";
+import {SharedService} from "../../common/services/shared.service";
 
 @Component({
   template: ``

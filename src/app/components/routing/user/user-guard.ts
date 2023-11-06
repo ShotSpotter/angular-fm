@@ -1,7 +1,7 @@
 import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from "@angular/router";
 import {Observable, of, Subject} from "rxjs";
-import {UserService} from "../../../common/user.service";
-import {AutoUnsubscribe} from "../../../common/auto-unsubscribe";
+import {UserService} from "../../../common/services/user.service";
+import {AutoUnsubscribe} from "../../../common/components/auto-unsubscribe";
 import {takeUntil} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Injectable} from "@angular/core";

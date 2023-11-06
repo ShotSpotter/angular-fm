@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PersonData} from '../../../common/person.component';
+import {PersonData} from '../../../common/components/person.component';
 import {timer} from 'rxjs';
 import {ComponentLifeCycleData} from './component-lifecycle-data';
 

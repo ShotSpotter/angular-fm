@@ -1,4 +1,4 @@
-import {LinkedData} from '../common/linked-data';
+import {LinkedData} from '../common/models/linked-data';
 
 export const FeatureData: LinkedData[] = [
   {url: '/components', title: 'Components', icon: 'hub'},

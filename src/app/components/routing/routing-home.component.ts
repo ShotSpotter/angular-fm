@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CardData} from '../../common/card.component';
+import {CardData} from '../../common/components/card.component';
 import {ROUTING_FEATURE_DATA} from './routing-feature-data';
 import {ActivatedRoute, Router} from "@angular/router";
 

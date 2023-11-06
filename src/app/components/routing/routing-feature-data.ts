@@ -1,4 +1,4 @@
-import {CardData} from '../../common/card.component';
+import {CardData} from '../../common/components/card.component';
 
 export const ROUTING_FEATURE_DATA: CardData[] = [
   {

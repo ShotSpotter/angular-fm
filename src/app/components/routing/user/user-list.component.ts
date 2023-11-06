@@ -2,15 +2,15 @@ import {Component} from "@angular/core";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {TreeNode} from "../../../common/tree-node";
-import {USER_LIST, UserNode} from "./user-data";
+import {USER_LIST, UserNode} from "../../../common/models/user-data";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../../common/user.service";
-import {AutoUnsubscribe} from "../../../common/auto-unsubscribe";
+import {UserService} from "../../../common/services/user.service";
+import {AutoUnsubscribe} from "../../../common/components/auto-unsubscribe";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 
 @Component({
-  selector: 'app-routing',
+  selector: 'app-user-list',
   template: `
     <div class="container-fluid">
       <div class="container background-color">
