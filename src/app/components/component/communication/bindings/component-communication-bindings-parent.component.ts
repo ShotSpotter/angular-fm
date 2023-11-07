@@ -4,9 +4,9 @@ import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-component-communication-bindings-parent',
   template: `
-      <div class="container-fluid">
-          <div class="container">
-              <div class="grid-component-communication-bindings justify-content-between background-color">
+      <div class="container-fluid p-0">
+          <div class="container background-color">
+              <div class="grid-component-communication-bindings justify-content-between">
                   <div class="w-100 p-2">
                       <div class="w-100 p-2 mb-2">
                         <h5 class="text-accent">Parent Component</h5>

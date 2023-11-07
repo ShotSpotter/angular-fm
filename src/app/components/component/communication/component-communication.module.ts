@@ -6,7 +6,7 @@ import {SharedModule} from '../../../common/shared.module';
 import {RouterModule} from '@angular/router';
 import {ComponentCommunicationBindingsParentComponent} from './bindings/component-communication-bindings-parent.component';
 import {ComponentCommunicationBindingsChildComponent} from './bindings/component-communication-bindings-child.component';
-import {LoanComponent} from '../../../common/components/loan.component';
+import {ComponentCommunicationServiceComponent} from "./services/component-communication-service.component";
 
 // Route Module
 @NgModule({
@@ -17,7 +17,7 @@ import {LoanComponent} from '../../../common/components/loan.component';
         children: [
           {path: 'params/:name', component: ComponentCommunicationParamsComponent, data: {title: 'Components Communication - (Path/Query) Parameters'}},
           {path: 'bindings', component: ComponentCommunicationBindingsParentComponent, data: {title: 'Components Communication - @Input/@Output Bindings'}},
-          {path: 'services', component: LoanComponent, data: {title: 'Components Communication - Service'}}
+          {path: 'services', component: ComponentCommunicationServiceComponent, data: {title: 'Components Communication - Service'}}
         ]
       }
     ])
@@ -35,7 +35,7 @@ export class ComponentCommunicationRouteModule {
     ComponentCommunicationParamsComponent,
     ComponentCommunicationBindingsParentComponent,
     ComponentCommunicationBindingsChildComponent,
-    LoanComponent
+    ComponentCommunicationServiceComponent
   ],
   imports: [
     CommonModule,
