@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
           <p class="section mb-2">
               Components are the main building blocks for Angular applications. They are special directives and have a
               template, styles and TS class that defines behavior.
-              These are nothing but <code>@Component</code> that we create them or use them in our apps.
+              These are nothing but <code>@Component</code> that we create and use them in our apps.
           </p>
           <div class="text-center pt-1">
                 <pre>
