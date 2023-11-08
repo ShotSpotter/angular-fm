@@ -4,7 +4,7 @@ import {MaterialModule} from '../../common/material.module';
 import {CommonModule} from '@angular/common';
 import {CardComponent} from './components/card.component';
 import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   exports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     BlockComponent,

@@ -24,7 +24,8 @@ body {
   @include mixins.grid(2, 'auto-fill');
 }
 
-.grid-subscriptions {
+.grid-subscriptions,
+.grid-forms {
   @include mixins.grid(2, 'auto-fill');
   justify-content: center !important;
 }

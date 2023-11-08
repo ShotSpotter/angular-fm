@@ -1,0 +1,9 @@
+@use "~src/assets/css/variables" as *;
+@use "~src/assets/css/mixins" as *;
+
+@media (min-width: 650px) {
+  .form-group {
+    max-width: 400px;
+    margin: auto;
+  }
+}

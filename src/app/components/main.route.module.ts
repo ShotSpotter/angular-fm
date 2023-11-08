@@ -17,6 +17,7 @@ import {HomeComponent} from "./home/home.component";
           {path: 'subscriptions', loadChildren: () => import('./subscriptions/subscriptions.module').then(m => m.SubscriptionsModule)},
           {path: 'directives', loadChildren: () => import('./directive/directive.module').then(m => m.DirectiveModule)},
           {path: 'routing', loadChildren: () => import('./routing/routing.module').then(m => m.RoutingModule)},
+          {path: 'forms', loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule)},
         ]
       },
       {path: '', redirectTo: 'main'}
