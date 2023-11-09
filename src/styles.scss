@@ -1,0 +1,269 @@
+/* You can add global styles to this file, and also import other style files */
+@use "assets/css/variables" as vars;
+@use "assets/css/mixins" as mixins;
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: vars.$app-font-family;
+  font-size: 1rem;
+}
+
+.grid-features {
+  @include mixins.grid(3, 'auto-fill');
+}
+
+.grid-lifecycle {
+  @include mixins.grid(2, 'auto-fill');
+}
+
+.grid-subscriptions,
+.grid-forms {
+  @include mixins.grid(2, 'auto-fill');
+  justify-content: center !important;
+}
+
+.grid-directives {
+  @include mixins.grid(3, 'auto-fill');
+  justify-content: center !important;
+}
+
+.grid-routes {
+  @include mixins.grid(4, 'auto-fill');
+  justify-content: center !important;
+}
+
+.grid-services {
+  @include mixins.grid(2, 'auto-fill');
+}
+
+.grid-directives-components {
+  @include mixins.grid(3, 'auto-fill');
+  justify-content: center !important;
+
+  > * {
+    padding: 1rem;
+    @extend .shadow;
+  }
+}
+
+.grid-directives-components-2 {
+  @include mixins.grid(2, 'auto-fill');
+  justify-content: center !important;
+
+  > * {
+    padding: 1rem;
+    @extend .shadow;
+  }
+}
+
+.container-fluid {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: flex-start;
+  min-height: 100%;
+  min-width: 100%;
+  height: 100%;
+  padding: 1rem;
+
+  > * {
+    width: 100%;
+  }
+
+  &.main-container, &.app-container {
+    height: auto;
+    padding: 0 !important;
+    background-color: vars.$primary-lite-x;
+  }
+
+  @media (max-width: 600px) {
+    padding: .5rem;
+  }
+}
+
+.app-container {
+  height: vars.$app-content-height;
+}
+
+.brand {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: vars.$app-brand-height;
+
+  .brand-img {
+    text-align: center;
+    cursor: pointer;
+
+    img {
+      height: 4rem;
+      width: 5rem;
+      filter: invert(20%) sepia(25%) saturate(25555%) hue-rotate(236deg) brightness(100%) contrast(50%);
+    }
+  }
+
+  .brand-name {
+    color: vars.$primary;
+    font-size: 1.75rem;
+    font-weight: 600;
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    height: #{vars.$app-brand-height * 3};
+
+    .brand-img, .brand-name {
+      width: 100%;
+      margin: 1rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+.mat-card {
+  @include mixins.mat-card-default();
+}
+
+.block {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 2.5rem;
+  background-color: vars.$background-light-grey;
+
+  .icon-container, .text {
+    flex-grow: 0;
+  }
+
+  .icon-container {
+    margin-right: 1rem;
+
+    mat-icon {
+      @include mixins.mat-icon-size(2rem);
+    }
+  }
+
+  &:hover {
+    background-color: darken(vars.$background-light-grey, 5%);
+  }
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    padding: 1rem .5rem;
+
+    .icon-container, .text {
+      flex-grow: 1;
+    }
+
+    .icon-container {
+      text-align: center;
+      margin-bottom: 3rem;
+
+      .mat-icon {
+        @include mixins.mat-icon-size(5rem);
+      }
+    }
+  }
+}
+
+.section {
+  font-family: vars.$app-font-family;
+  font-size: 1rem;
+  background-color: lighten(#eef5f8, .5%);
+  padding: 2rem;
+  color: vars.$color-gray-600 !important;
+
+  @media (max-width: 600px) {
+    padding: .5rem;
+  }
+}
+
+.code {
+  background-color: vars.$color-gray-50;
+  font-family: monospace !important;
+  display: flex;
+  align-items: center;
+  margin: 0 0 1rem 0 !important;
+  padding: 5px;
+}
+
+code {
+  font-size: 0.875em !important;
+  color: vars.$accent !important;
+  word-wrap: break-word !important;
+}
+
+.code-block {
+  color: vars.$accent !important;
+  background: #e2e2e22e;
+  font-size: 0.875em !important;
+  word-wrap: break-word !important;
+  text-align: left !important;
+}
+
+.code-highlight {
+  color: vars.$primary;
+  font-weight: 600;
+}
+
+ul.content-list-simple {
+  list-style: none;
+  padding: .25rem;
+  margin: .25rem 0;
+
+  > li {
+    margin: .25rem 0;
+    padding: .25rem;
+
+    > span {
+      margin-right: .5rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.active-link {
+  background-color: vars.$primary !important;
+  color: vars.$color-gray-200 !important;
+
+  mat-icon.mat-primary {
+    color: vars.$warn;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.shadow {
+  box-shadow: vars.$shadow-default !important;
+}
+
+.shadow-lite {
+  box-shadow: vars.$shadow-lite !important;
+}
+
+.scale {
+  transition: vars.$transition-default;
+
+  &.up {
+    transform: scale(2);
+  }
+}
+
+pre {
+  margin: 0;
+}
